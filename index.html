@@ -8,14 +8,10 @@
 </head>
 <body>
   <div class="container">
-    <div class="theme-toggle">
-      <label>
-        <input type="checkbox" id="darkToggle" onchange="toggleDarkMode()" />
-        Dark Mode
-      </label>
-    </div>
-
-    <h1>Build Your Studio Kit</h1>
+    <header>
+      <h1>🎛️ Build Your Studio Kit</h1>
+      <button onclick="toggleDarkMode()" class="toggle-btn">Toggle Dark Mode</button>
+    </header>
 
     <form id="studioForm">
       <label for="mic">Choose a Microphone:</label>
@@ -46,7 +42,7 @@
         <option value="JBL 305P MkII">JBL 305P MkII</option>
       </select>
 
-      <button type="button" onclick="buildKit()">Build My Kit</button>
+      <button type="button" class="build-btn" onclick="buildKit()">Build My Kit</button>
     </form>
 
     <div class="output" id="kitOutput"></div>
