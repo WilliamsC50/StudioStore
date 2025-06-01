@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build Your Studio Kit</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+    }
+    select, button {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .output {
+      margin-top: 2rem;
+      background: #eef;
+      padding: 1rem;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Build Your Studio Kit</h1>
+
+    <form id="studioForm">
+      <label for="mic">Choose a Microphone:</label>
+      <select id="mic">
+        <option value="Shure SM7B">Shure SM7B</option>
+        <option value="Rode NT1">Rode NT1</option>
+        <option value="Audio-Technica AT2020">Audio-Technica AT2020</option>
+      </select>
+
+      <label for="interface">Choose an Audio Interface:</label>
+      <select id="interface">
+        <option value="Focusrite Scarlett 2i2">Focusrite Scarlett 2i2</option>
+        <option value="PreSonus AudioBox USB 96">PreSonus AudioBox USB 96</option>
+        <option value="Universal Audio Volt 2">Universal Audio Volt 2</option>
+      </select>
+
+      <label for="headphones">Choose Headphones:</label>
+      <select id="headphones">
+        <option value="Audio-Technica ATH-M50x">Audio-Technica ATH-M50x</option>
+        <option value="Sony MDR-7506">Sony MDR-7506</option>
+        <option value="Beyerdynamic DT 770 PRO">Beyerdynamic DT 770 PRO</option>
+      </select>
+
+      <label for="monitors">Choose Studio Monitors:</label>
+      <select id="monitors">
+        <option value="Yamaha HS5">Yamaha HS5</option>
+        <option value="KRK Rokit 5">KRK Rokit 5</option>
+        <option value="JBL 305P MkII">JBL 305P MkII</option>
+      </select>
+
+      <button type="button" onclick="buildKit()">Build My Kit</button>
+    </form>
+
+    <div class="output" id="kitOutput"></div>
+  </div>
+
+  <script>
+    function buildKit() {
+      const mic = document.getElementById('mic').value;
+      const interface = document.getElementById('interface').value;
+      const headphones = document.getElementById('headphones').value;
+      const monitors = document.getElementById('monitors').value;
+
+      const output = `
+        <h3>Your Custom Studio Kit:</h3>
+        <ul>
+          <li><strong>Microphone:</strong> ${mic}</li>
+          <li><strong>Audio Interface:</strong> ${interface}</li>
+          <li><strong>Headphones:</strong> ${headphones}</li>
+          <li><strong>Studio Monitors:</strong> ${monitors}</li>
+        </ul>
+      `;
+
+      document.getElementById('kitOutput').innerHTML = output;
+    }
+  </script>
+</body>
+</html>
