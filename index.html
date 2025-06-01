@@ -55,27 +55,30 @@
   <script>
     function buildKit() {
       const mic = document.getElementById('mic').value;
-      const interface = document.getElementById('interface').value;
+      const audioInterface = document.getElementById('interface').value;
       const headphones = document.getElementById('headphones').value;
       const monitors = document.getElementById('monitors').value;
 
-      const output = `
+      const outputHTML = `
         <h3>Your Custom Studio Kit:</h3>
         <ul>
           <li><strong>Microphone:</strong> ${mic}</li>
-          <li><strong>Audio Interface:</strong> ${interface}</li>
+          <li><strong>Audio Interface:</strong> ${audioInterface}</li>
           <li><strong>Headphones:</strong> ${headphones}</li>
           <li><strong>Studio Monitors:</strong> ${monitors}</li>
         </ul>
       `;
 
       const kitOutput = document.getElementById('kitOutput');
-      kitOutput.innerHTML = output;
+      kitOutput.innerHTML = outputHTML;
       kitOutput.style.display = 'block';
     }
 
-    document.getElementById('darkModeToggle').addEventListener('change', function () {
-      document.body.classList.toggle('dark-mode', this.checked);
+    window.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.getElementById('darkModeToggle');
+      toggle.addEventListener('change', function () {
+        document.body.classList.toggle('dark-mode', this.checked);
+      });
     });
   </script>
 </body>
