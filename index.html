@@ -10,7 +10,7 @@
   <div class="container">
     <h1>Build Your Studio Kit</h1>
 
-    <form id="studioForm">
+    <form id="studioForm" onsubmit="event.preventDefault(); buildKit();">
       <label for="mic">Choose a Microphone:</label>
       <select id="mic">
         <option value="Shure SM7B">Shure SM7B</option>
@@ -39,10 +39,10 @@
         <option value="JBL 305P MkII">JBL 305P MkII</option>
       </select>
 
-      <button type="button" onclick="buildKit()">Build My Kit</button>
+      <button type="submit">Build My Kit</button>
     </form>
 
-    <div class="output" id="kitOutput"></div>
+    <div class="output" id="kitOutput" style="display: none;"></div>
   </div>
 
   <footer class="footer-toggle">
@@ -66,7 +66,9 @@
         </ul>
       `;
 
-      document.getElementById('kitOutput').innerHTML = output;
+      const kitOutput = document.getElementById('kitOutput');
+      kitOutput.innerHTML = output;
+      kitOutput.style.display = 'block';
     }
 
     document.getElementById('darkModeToggle').addEventListener('click', () => {
