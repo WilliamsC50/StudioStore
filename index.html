@@ -7,14 +7,6 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="toggle-container">
-    <label class="switch">
-      <input type="checkbox" id="darkModeToggle" />
-      <span class="slider round"></span>
-    </label>
-    <span>Dark Mode</span>
-  </div>
-
   <div class="container">
     <h1>Build Your Studio Kit</h1>
 
@@ -53,6 +45,10 @@
     <div class="output" id="kitOutput"></div>
   </div>
 
+  <footer class="footer-toggle">
+    <button id="darkModeToggle">Toggle Dark Mode</button>
+  </footer>
+
   <script>
     function buildKit() {
       const mic = document.getElementById('mic').value;
@@ -73,9 +69,8 @@
       document.getElementById('kitOutput').innerHTML = output;
     }
 
-    // Dark Mode Toggle
-    document.getElementById('darkModeToggle').addEventListener('change', function () {
-      document.body.classList.toggle('dark-mode', this.checked);
+    document.getElementById('darkModeToggle').addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
     });
   </script>
 </body>
