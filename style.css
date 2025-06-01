@@ -1,19 +1,32 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
+  background-image: url('./Background/Background1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: #333;
   margin: 0;
   padding: 2rem;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s, color 0.3s, background-image 0.3s;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  background-image: none;
+  color: #eee;
 }
 
 .container {
   max-width: 600px;
   margin: auto;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.95);
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+}
+
+body.dark-mode .container {
+  background: rgba(0, 0, 0, 0.7);
 }
 
 h1 {
@@ -21,27 +34,39 @@ h1 {
   color: #333;
 }
 
+body.dark-mode h1 {
+  color: #ff4d4d; /* red in dark mode */
+}
+
 label {
   display: block;
   margin-top: 1rem;
+  color: #333;
 }
 
-select,
-button {
+body.dark-mode label {
+  color: #ff4d4d;
+}
+
+select, button {
   width: 100%;
   padding: 0.5rem;
   margin-top: 0.5rem;
   font-size: 1rem;
+  border-radius: 4px;
+}
+
+select {
+  border: 1px solid #ccc;
 }
 
 button {
-  background-color: #ff4444;
+  background-color: #ff4d4d;
   color: white;
   border: none;
   cursor: pointer;
-  border-radius: 25px;
   margin-top: 1.5rem;
-  transition: background-color 0.3s;
+  border-radius: 4px;
 }
 
 button:hover {
@@ -55,40 +80,23 @@ button:hover {
   border-radius: 6px;
 }
 
-.dark-mode {
-  background-color: #121212;
-  color: #eee;
+body.dark-mode .output {
+  background: #1f1f1f;
 }
 
-.dark-mode .container {
-  background-color: #1e1e1e;
-  color: #eee;
+.footer {
+  text-align: center;
+  margin-top: 2rem;
 }
 
-.dark-mode h1,
-.dark-mode label {
-  color: #ff4444;
-}
-
-.dark-mode .output {
-  background: #2a2a2a;
-}
-
-.dark-toggle-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 3rem;
-}
-
-/* Toggle Switch */
-.switch {
-  position: relative;
+.toggle-switch {
   display: inline-block;
   width: 60px;
   height: 34px;
+  position: relative;
 }
 
-.switch input {
+.toggle-switch input {
   opacity: 0;
   width: 0;
   height: 0;
@@ -97,10 +105,8 @@ button:hover {
 .slider {
   position: absolute;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
   background-color: #ccc;
   transition: 0.4s;
   border-radius: 34px;
@@ -109,8 +115,7 @@ button:hover {
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
+  height: 26px; width: 26px;
   left: 4px;
   bottom: 4px;
   background-color: white;
@@ -119,9 +124,10 @@ button:hover {
 }
 
 input:checked + .slider {
-  background-color: #ff4444;
+  background-color: #ff4d4d;
 }
 
 input:checked + .slider:before {
   transform: translateX(26px);
 }
+
