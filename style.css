@@ -1,7 +1,7 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #f9f9f9;
-  color: #111;
+  color: #333;
   margin: 0;
   padding: 2rem;
   transition: background-color 0.3s, color 0.3s;
@@ -24,29 +24,28 @@ h1 {
 label {
   display: block;
   margin-top: 1rem;
-  font-weight: bold;
-  color: #333;
 }
 
 select,
 button {
   width: 100%;
-  padding: 0.6rem;
+  padding: 0.5rem;
   margin-top: 0.5rem;
   font-size: 1rem;
 }
 
 button {
-  background-color: #d32f2f;
+  background-color: #ff4444;
   color: white;
   border: none;
   cursor: pointer;
-  border-radius: 6px;
+  border-radius: 25px;
+  margin-top: 1.5rem;
   transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: #b71c1c;
+  background-color: #cc0000;
 }
 
 .output {
@@ -56,60 +55,73 @@ button:hover {
   border-radius: 6px;
 }
 
+.dark-mode {
+  background-color: #121212;
+  color: #eee;
+}
+
+.dark-mode .container {
+  background-color: #1e1e1e;
+  color: #eee;
+}
+
+.dark-mode h1,
+.dark-mode label {
+  color: #ff4444;
+}
+
+.dark-mode .output {
+  background: #2a2a2a;
+}
+
 .dark-toggle-container {
   display: flex;
   justify-content: center;
   margin-top: 3rem;
 }
 
-#darkModeToggle {
-  background-color: #444;
-  color: white;
-  padding: 0.6rem 1.6rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 999px; /* pill shape */
+/* Toggle Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
   cursor: pointer;
-  transition: background-color 0.3s;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
 }
 
-#darkModeToggle:hover {
-  background-color: #666;
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
 }
 
-/* DARK MODE STYLES */
-body.dark-mode {
-  background-color: #121212;
-  color: #f0f0f0;
-}
-
-body.dark-mode .container {
-  background-color: #1e1e1e;
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
-}
-
-body.dark-mode h1,
-body.dark-mode label {
-  color: #ff4444;
-}
-
-body.dark-mode .output {
-  background: #222;
-  color: #fff;
-}
-
-body.dark-mode button {
+input:checked + .slider {
   background-color: #ff4444;
 }
 
-body.dark-mode button:hover {
-  background-color: #e03030;
-}
-
-body.dark-mode #darkModeToggle {
-  background-color: #ff4444;
-}
-
-body.dark-mode #darkModeToggle:hover {
-  background-color: #e03030;
+input:checked + .slider:before {
+  transform: translateX(26px);
 }
