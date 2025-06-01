@@ -56,25 +56,24 @@ button:hover {
   border-radius: 6px;
 }
 
-.footer-toggle {
+.dark-toggle-container {
   display: flex;
   justify-content: center;
-  align-items: center;
   margin-top: 3rem;
 }
 
-.footer-toggle button {
+#darkModeToggle {
   background-color: #444;
   color: white;
-  padding: 0.6rem 1.4rem;
-  font-size: 0.95rem;
+  padding: 0.6rem 1.6rem;
+  font-size: 1rem;
   border: none;
-  border-radius: 999px;
+  border-radius: 999px; /* pill shape */
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
-.footer-toggle button:hover {
+#darkModeToggle:hover {
   background-color: #666;
 }
 
@@ -107,11 +106,10 @@ body.dark-mode button:hover {
   background-color: #e03030;
 }
 
-body.dark-mode .footer-toggle button {
+body.dark-mode #darkModeToggle {
   background-color: #ff4444;
-  color: #fff;
 }
 
-body.dark-mode .footer-toggle button:hover {
+body.dark-mode #darkModeToggle:hover {
   background-color: #e03030;
 }
