@@ -7,12 +7,14 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="overlay"></div>
+
   <div class="container">
     <h1>Build Your Studio Kit</h1>
 
     <form id="studioForm">
       <div class="form-group">
-        <label for="mic">Choose a Microphone:</label>
+        <label for="mic">Microphone:</label>
         <select id="mic">
           <option value="N/A" data-price="0">N/A</option>
           <option value="Shure SM7B" data-price="399">Shure SM7B</option>
@@ -23,7 +25,7 @@
       </div>
 
       <div class="form-group">
-        <label for="interface">Choose an Audio Interface:</label>
+        <label for="interface">Audio Interface:</label>
         <select id="interface">
           <option value="N/A" data-price="0">N/A</option>
           <option value="Focusrite Scarlett 2i2" data-price="189">Focusrite Scarlett 2i2</option>
@@ -34,7 +36,7 @@
       </div>
 
       <div class="form-group">
-        <label for="headphones">Choose Headphones:</label>
+        <label for="headphones">Headphones:</label>
         <select id="headphones">
           <option value="N/A" data-price="0">N/A</option>
           <option value="Audio-Technica ATH-M50x" data-price="149">Audio-Technica ATH-M50x</option>
@@ -45,7 +47,7 @@
       </div>
 
       <div class="form-group">
-        <label for="monitors">Choose Studio Monitors:</label>
+        <label for="monitors">Studio Monitors:</label>
         <select id="monitors">
           <option value="N/A" data-price="0">N/A</option>
           <option value="Yamaha HS5" data-price="200">Yamaha HS5</option>
@@ -56,7 +58,7 @@
       </div>
 
       <div class="form-group">
-        <label for="console">Choose a Mixing Console:</label>
+        <label for="console">Mixing Console:</label>
         <select id="console">
           <option value="N/A" data-price="0">N/A</option>
           <option value="Behringer Xenyx Q802USB" data-price="99">Behringer Xenyx Q802USB</option>
@@ -97,8 +99,8 @@
         const select = document.getElementById(item.id);
         const qty = parseInt(document.getElementById(item.qty).value) || 1;
         const label = select.value;
-        const price = parseFloat(select.selectedOptions[0].getAttribute('data-price')) || 0;
-        const itemTotal = qty * price;
+        const price = parseFloat(select.selectedOptions[0].dataset.price);
+        const itemTotal = price * qty;
 
         if (label !== "N/A") {
           output += `<li><strong>${item.id.charAt(0).toUpperCase() + item.id.slice(1)}:</strong> ${label} × ${qty} ($${itemTotal.toFixed(2)})</li>`;
