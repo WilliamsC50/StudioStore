@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="background-container"></div>
+
   <div class="container">
     <h1>Build Your Studio Kit</h1>
 
@@ -48,34 +50,34 @@
   <footer>
     <label class="toggle-label">
       <input type="checkbox" id="darkModeToggle" />
-      <span class="toggle-slider"></span> Dark Mode
+      <span class="toggle-slider"></span>
     </label>
   </footer>
 
   <script>
-    function buildKit() {
-      const mic = document.getElementById('mic').value;
-      const interfaceVal = document.getElementById('interface').value;
-      const headphones = document.getElementById('headphones').value;
-      const monitors = document.getElementById('monitors').value;
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('buildButton').addEventListener('click', function () {
+        const mic = document.getElementById('mic').value;
+        const interfaceVal = document.getElementById('interface').value;
+        const headphones = document.getElementById('headphones').value;
+        const monitors = document.getElementById('monitors').value;
 
-      const output = `
-        <h3>Your Custom Studio Kit:</h3>
-        <ul>
-          <li><strong>Microphone:</strong> ${mic}</li>
-          <li><strong>Audio Interface:</strong> ${interfaceVal}</li>
-          <li><strong>Headphones:</strong> ${headphones}</li>
-          <li><strong>Studio Monitors:</strong> ${monitors}</li>
-        </ul>
-      `;
+        const output = `
+          <h3>Your Custom Studio Kit:</h3>
+          <ul>
+            <li><strong>Microphone:</strong> ${mic}</li>
+            <li><strong>Audio Interface:</strong> ${interfaceVal}</li>
+            <li><strong>Headphones:</strong> ${headphones}</li>
+            <li><strong>Studio Monitors:</strong> ${monitors}</li>
+          </ul>
+        `;
 
-      document.getElementById('kitOutput').innerHTML = output;
-    }
+        document.getElementById('kitOutput').innerHTML = output;
+      });
 
-    document.getElementById('buildButton').addEventListener('click', buildKit);
-
-    document.getElementById('darkModeToggle').addEventListener('change', function () {
-      document.body.classList.toggle('dark-mode');
+      document.getElementById('darkModeToggle').addEventListener('change', function () {
+        document.body.classList.toggle('dark-mode');
+      });
     });
   </script>
 </body>
