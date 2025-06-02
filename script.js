@@ -57,67 +57,6 @@ const prices = {
   "A&H SQ-5": 3999
 };
 
-function updateOutput() {
-  const sections = ['mic', 'interface', 'headphones', 'monitors', 'console'];
-  let outputHTML = '<h3>Your Custom Studio Kit:</h3><ul>';
-  let total = 0;
 
-  sections.forEach(section => {
-    const selects = document.querySelectorAll(`select[name="${section}"]`);
-    selects.forEach((sel, i) => {
-      const item = sel.value;
-      const qty = document.getElementById(`${section}Qty${i}`).value;
-      const itemPrice = prices[item] || 0;
-      const subtotal = itemPrice * qty;
-      total += subtotal;
-
-      if (item !== 'N/A') {
-        outputHTML += `
-          <li class="kit-entry">
-            <span><strong>${section.charAt(0).toUpperCase() + section.slice(1)}:</strong> ${item} × ${qty} ($${subtotal.toFixed(2)})</span>
-            <button type="button" onclick="removeItem('${section}', ${i})">Remove</button>
-          </li>
-        `;
-      }
-    });
-  });
-
-  outputHTML += `</ul><div class="total-price">Total: $${total.toFixed(2)}</div>`;
-  document.getElementById('kitOutput').innerHTML = outputHTML;
-}
-
-function addDropdown(section) {
-  const container = document.getElementById(`${section}Container`);
-  const index = container.querySelectorAll('select').length;
-
-  const select = document.createElement('select');
-  select.name = section;
-  select.innerHTML = Object.keys(prices).filter(p => p !== "N/A" || section === 'console').map(p => `<option value="${p}">${p}</option>`).join('');
-  const qty = document.createElement('input');
-  qty.type = 'number';
-  qty.min = '1';
-  qty.max = '99';
-  qty.value = '1';
-  qty.id = `${section}Qty${index}`;
-
-  const row = document.createElement('div');
-  row.className = 'select-row';
-  row.appendChild(select);
-  row.appendChild(qty);
-  container.appendChild(row);
-  updateOutput();
-}
-
-function removeItem(section, index) {
-  const container = document.getElementById(`${section}Container`);
-  container.removeChild(container.children[index]);
-  updateOutput();
-}
-
-document.getElementById('darkModeToggle').addEventListener('change', () => {
-  document.body.classList.toggle('dark-mode');
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  updateOutput();
-});
+::contentReference[oaicite:15]{index=15}
+ 
