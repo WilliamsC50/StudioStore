@@ -82,6 +82,12 @@ button:hover {
   padding-left: 0;
 }
 
+.prebuilt-kit img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
 /* Footer & Toggle */
 footer {
   text-align: center;
