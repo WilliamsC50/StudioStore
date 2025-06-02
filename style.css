@@ -144,3 +144,18 @@ footer {
 .dark-mode button {
   background-color: #c00;
 }
+
+.prebuilt-section {
+  margin-top: 3rem;
+}
+
+.prebuilt-kit {
+  background-color: rgba(255, 255, 255, 0.1);
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.kit-details {
+  margin-top: 0.5rem;
+}

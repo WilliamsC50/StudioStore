@@ -63,6 +63,25 @@
     </form>
 
     <div class="output" id="kitOutput"></div>
+
+    <div class="prebuilt-section">
+      <h2>Prebuilt Studio Kits</h2>
+      <div class="prebuilt-kit" id="soloKit">
+        <h3>Solo Artist Kit</h3>
+        <button onclick="showPrebuilt('solo')">View Kit</button>
+        <div class="kit-details" id="soloDetails"></div>
+      </div>
+      <div class="prebuilt-kit" id="beatKit">
+        <h3>Beat Producer Kit</h3>
+        <button onclick="showPrebuilt('beat')">View Kit</button>
+        <div class="kit-details" id="beatDetails"></div>
+      </div>
+      <div class="prebuilt-kit" id="bandKit">
+        <h3>Band Home Recording Kit</h3>
+        <button onclick="showPrebuilt('band')">View Kit</button>
+        <div class="kit-details" id="bandDetails"></div>
+      </div>
+    </div>
   </div>
 
   <footer>
@@ -73,22 +92,43 @@
   </footer>
 
   <script>
-    function buildKit() {
-      const prices = {
-        "Shure SM7B": 399.00,
-        "RØDE NT1": 269.00,
-        "Audio-Technica AT2020": 99.00,
-        "Focusrite Scarlett 2i2": 219.99,
-        "PreSonus AudioBox USB 96": 89.99,
-        "Universal Audio Volt 2": 189.00,
-        "Audio-Technica ATH-M50x": 169.00,
-        "Sony MDR-7506": 99.99,
-        "Beyerdynamic DT 770 PRO": 179.00,
-        "Yamaha HS5": 199.99,
-        "KRK Rokit 5 G4": 179.00,
-        "JBL 305P MkII": 149.00
-      };
+    const prices = {
+      "Shure SM7B": 399.00,
+      "RØDE NT1": 269.00,
+      "Audio-Technica AT2020": 99.00,
+      "Focusrite Scarlett 2i2": 219.99,
+      "PreSonus AudioBox USB 96": 89.99,
+      "Universal Audio Volt 2": 189.00,
+      "Audio-Technica ATH-M50x": 169.00,
+      "Sony MDR-7506": 99.99,
+      "Beyerdynamic DT 770 PRO": 179.00,
+      "Yamaha HS5": 199.99,
+      "KRK Rokit 5 G4": 179.00,
+      "JBL 305P MkII": 149.00
+    };
 
+    const prebuiltKits = {
+      solo: [
+        { name: "Shure SM7B", quantity: 1 },
+        { name: "Focusrite Scarlett 2i2", quantity: 1 },
+        { name: "Sony MDR-7506", quantity: 1 },
+        { name: "Yamaha HS5", quantity: 2 }
+      ],
+      beat: [
+        { name: "RØDE NT1", quantity: 1 },
+        { name: "Universal Audio Volt 2", quantity: 1 },
+        { name: "Audio-Technica ATH-M50x", quantity: 1 },
+        { name: "KRK Rokit 5 G4", quantity: 2 }
+      ],
+      band: [
+        { name: "Audio-Technica AT2020", quantity: 4 },
+        { name: "PreSonus AudioBox USB 96", quantity: 1 },
+        { name: "Beyerdynamic DT 770 PRO", quantity: 2 },
+        { name: "JBL 305P MkII", quantity: 4 }
+      ]
+    };
+
+    function buildKit() {
       const output = {
         mic: [],
         interface: [],
@@ -114,11 +154,25 @@
       let html = '<h3>Your Custom Studio Kit:</h3><ul>';
       for (const [key, items] of Object.entries(output)) {
         items.forEach(obj => {
-          html += `<li><strong>${key.charAt(0).toUpperCase() + key.slice(1)}:</strong> ${obj.item} (x${obj.quantity}) - $${obj.subtotal.toFixed(2)}</li>`;
+          html += `<li><strong>${key}:</strong> ${obj.item} (x${obj.quantity}) - $${obj.subtotal.toFixed(2)}</li>`;
         });
       }
       html += `</ul><h3>Total Price: $${total.toFixed(2)}</h3>`;
       document.getElementById('kitOutput').innerHTML = html;
+    }
+
+    function showPrebuilt(type) {
+      const kit = prebuiltKits[type];
+      let total = 0;
+      let html = "<ul>";
+      kit.forEach(item => {
+        const price = prices[item.name] || 0;
+        const subtotal = price * item.quantity;
+        total += subtotal;
+        html += `<li>${item.name} (x${item.quantity}) - $${subtotal.toFixed(2)}</li>`;
+      });
+      html += `</ul><h4>Total Price: $${total.toFixed(2)}</h4>`;
+      document.getElementById(`${type}Details`).innerHTML = html;
     }
 
     document.getElementById('darkModeToggle').addEventListener('change', function () {
