@@ -1,28 +1,15 @@
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  color: #222;
-  background-color: #fff;
-  transition: background-color 0.3s, color 0.3s;
-  position: relative;
-  z-index: 1;
-}
-
-.background-container {
-  background: url("Background/Background1.jpg") no-repeat center center fixed;
+  font-family: Arial, sans-serif;
+  background: url('Background1.jpg') no-repeat center center fixed;
   background-size: cover;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.2;
+  transition: background-color 0.3s ease;
+  color: #222;
 }
 
 .container {
   max-width: 600px;
-  margin: 60px auto;
+  margin: 40px auto;
   padding: 20px;
   background: rgba(255, 255, 255, 0.95);
   border-radius: 10px;
@@ -31,7 +18,7 @@ body {
 
 h1 {
   text-align: center;
-  color: #222;
+  color: #c62828;
 }
 
 label, select, button {
@@ -44,27 +31,58 @@ label, select, button {
 select {
   padding: 8px;
   border-radius: 5px;
-  border: 1px solid #ccc;
 }
 
 button {
   background-color: #c62828;
   color: white;
   padding: 12px;
+  font-size: 16px;
   border: none;
   border-radius: 8px;
-  font-size: 18px;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 button:hover {
-  background-color: #b71c1c;
+  background-color: #a91d1d;
 }
 
 .output {
   margin-top: 20px;
 }
 
+/* Prebuilt Kits Section */
+.prebuilt-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.prebuilt-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.prebuilt-kit {
+  margin-bottom: 30px;
+}
+
+.prebuilt-kit h3 {
+  margin-bottom: 10px;
+  color: #c62828;
+}
+
+.prebuilt-kit ul {
+  list-style: disc inside;
+  padding-left: 0;
+}
+
+/* Footer & Toggle */
 footer {
   text-align: center;
   padding: 20px;
@@ -74,65 +92,69 @@ footer {
   display: inline-flex;
   align-items: center;
   cursor: pointer;
-  user-select: none;
 }
 
-.toggle-label input {
+.toggle-label input[type="checkbox"] {
   display: none;
 }
 
 .toggle-slider {
-  position: relative;
   width: 50px;
-  height: 28px;
-  background-color: #ccc;
-  border-radius: 28px;
-  margin-left: 10px;
-  transition: background-color 0.3s;
+  height: 24px;
+  background: #ccc;
+  border-radius: 50px;
+  position: relative;
+  margin-right: 10px;
+  transition: 0.4s;
 }
 
 .toggle-slider::before {
   content: "";
   position: absolute;
-  width: 22px;
-  height: 22px;
-  left: 3px;
-  top: 3px;
-  background-color: white;
+  width: 20px;
+  height: 20px;
+  left: 2px;
+  bottom: 2px;
+  background: white;
   border-radius: 50%;
-  transition: transform 0.3s;
+  transition: 0.4s;
 }
 
 input:checked + .toggle-slider {
-  background-color: #c62828;
+  background: #c62828;
 }
 
 input:checked + .toggle-slider::before {
-  transform: translateX(22px);
+  transform: translateX(26px);
 }
 
 /* Dark Mode */
 body.dark-mode {
   background-color: #121212;
-  color: #f5f5f5;
+  color: #f0f0f0;
 }
 
-body.dark-mode .container {
+body.dark-mode .container,
+body.dark-mode .prebuilt-container {
   background: rgba(30, 30, 30, 0.9);
 }
 
-body.dark-mode h1 {
+body.dark-mode h1,
+body.dark-mode .prebuilt-container h2,
+body.dark-mode .prebuilt-kit h3 {
   color: #c62828;
 }
 
 body.dark-mode label,
 body.dark-mode select,
-body.dark-mode .output {
+body.dark-mode .prebuilt-kit ul {
   color: #f5f5f5;
 }
 
-body.dark-mode select {
-  background-color: #2b2b2b;
-  color: #f5f5f5;
-  border: 1px solid #444;
+body.dark-mode button {
+  background-color: #c62828;
+}
+
+body.dark-mode button:hover {
+  background-color: #a91d1d;
 }
