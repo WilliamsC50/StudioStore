@@ -10,7 +10,7 @@
   <div class="container">
     <h1>Build Your Studio Kit</h1>
 
-    <form id="studioForm">
+    <form id="studioForm" onsubmit="event.preventDefault(); buildKit();">
       <label for="mic">Choose a Microphone:</label>
       <select id="mic">
         <option value="Shure SM7B">Shure SM7B</option>
@@ -39,7 +39,7 @@
         <option value="JBL 305P MkII">JBL 305P MkII</option>
       </select>
 
-      <button type="button" onclick="buildKit()">Build My Kit</button>
+      <button type="submit">Build My Kit</button>
     </form>
 
     <div class="output" id="kitOutput"></div>
@@ -55,7 +55,7 @@
   <script>
     function buildKit() {
       const mic = document.getElementById('mic').value;
-      const interface = document.getElementById('interface').value;
+      const interfaceVal = document.getElementById('interface').value;
       const headphones = document.getElementById('headphones').value;
       const monitors = document.getElementById('monitors').value;
 
@@ -63,7 +63,7 @@
         <h3>Your Custom Studio Kit:</h3>
         <ul>
           <li><strong>Microphone:</strong> ${mic}</li>
-          <li><strong>Audio Interface:</strong> ${interface}</li>
+          <li><strong>Audio Interface:</strong> ${interfaceVal}</li>
           <li><strong>Headphones:</strong> ${headphones}</li>
           <li><strong>Studio Monitors:</strong> ${monitors}</li>
         </ul>
