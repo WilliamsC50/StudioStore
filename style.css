@@ -1,75 +1,181 @@
-/* Reset and Base */
+/* Reset and Base Styles */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
-  background: url('Background/Background1.jpg') no-repeat center center fixed;
+  background-image: url('Background/Background1.jpg');
   background-size: cover;
-  color: #fff;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: #333;
   transition: background-color 0.3s, color 0.3s;
 }
 
-/* Dark mode */
-body.dark-mode {
-  background-color: #121212;
-  color: #ff4d4d;
-}
-
-body.dark-mode h1,
-body.dark-mode label,
-body.dark-mode select,
-body.dark-mode input,
-body.dark-mode .output,
-body.dark-mode .prebuilt-kit {
-  color: #ff4d4d;
-}
-
-/* Container */
 .container {
-  background-color: rgba(0, 0, 0, 0.7);
-  max-width: 700px;
+  max-width: 800px;
   margin: 2em auto;
+  background-color: rgba(255, 255, 255, 0.9);
   padding: 2em;
   border-radius: 10px;
-  box-shadow: 0 0 10px #000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 h1 {
-  color: #ff4d4d;
   text-align: center;
+  color: #222;
+  margin-bottom: 1.5em;
 }
 
-/* Form Styling */
+/* Form Layout */
 form label {
+  font-weight: bold;
+  margin-bottom: 0.5em;
   display: block;
-  margin-top: 1em;
+}
+
+select, input[type="number"] {
+  padding: 0.6em;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+}
+
+button {
+  margin-top: 1.5em;
+  padding: 0.8em 1.5em;
+  background-color: #c62828;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #b71c1c;
+}
+
+/* Flex row and quantity box */
+.form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5em;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 0.4em;
+}
+
+.input-group select {
+  flex: 1;
+}
+
+.input-group input[type="number"] {
+  width: 60px;
+  padding: 0.4em;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Output Styling */
+.output {
+  margin-top: 2em;
+  background-color: #f1f1f1;
+  padding: 1em;
+  border-radius: 8px;
+}
+
+.output h3 {
+  margin-top: 0;
+}
+
+/* Prebuilt Kits */
+.prebuilt-container {
+  max-width: 800px;
+  margin: 2em auto;
+  background-color: rgba(255, 255, 255, 0.92);
+  padding: 2em;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+}
+
+.prebuilt-kit {
+  margin-bottom: 2em;
+}
+
+.prebuilt-kit h3 {
+  margin-bottom: 0.5em;
+}
+
+/* Footer and Dark Mode Toggle */
+footer {
+  text-align: center;
+  margin-top: 3em;
+  padding: 1em;
+}
+
+.toggle-label {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
   font-weight: bold;
 }
 
-select,
-input[type="number"] {
-  width: 100%;
-  padding: 0.5em;
-  margin-top: 0.3em;
-  border-radius: 5px;
-  border: none;
+.toggle-label input[type="checkbox"] {
+  display: none;
 }
 
-input[type="number"] {
-  width: 60px;
-  display: inline-block;
-  margin-top: 0.5em;
+.toggle-slider {
+  width: 50px;
+  height: 26px;
+  background-color: #ccc;
+  border-radius: 50px;
+  position: relative;
+  margin-right: 10px;
+  transition: background-color 0.3s;
 }
 
-/* Layout for dropdown + quantity */
-.form-row {
-  margin-bottom: 1em;
+.toggle-slider::before {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  left: 2px;
+  top: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
 }
 
-/* Button */
-button {
-  margin-top: 1.5em;
-  padding: 0.7em 1.2em;
-  background-color: #ff4d4d;
-  color: white;
-  border:
+input[type="checkbox"]:checked + .toggle-slider {
+  background-color: #c62828;
+}
+
+input[type="checkbox"]:checked + .toggle-slider::before {
+  transform: translateX(24px);
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #121212;
+  color: #eee;
+}
+
+body.dark-mode .container,
+body.dark-mode .prebuilt-container {
+  background-color: rgba(34, 34, 34, 0.95);
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3 {
+  color: #c62828;
+}
+
+body.dark-mode .output {
+  background-color: #1e1e1e;
+  color: #ddd;
+}

@@ -13,42 +13,50 @@
     <form id="studioForm">
       <div class="form-row">
         <label for="mic">Choose a Microphone:</label>
-        <select id="mic">
-          <option value="Shure SM7B">Shure SM7B</option>
-          <option value="Rode NT1">Rode NT1</option>
-          <option value="Audio-Technica AT2020">Audio-Technica AT2020</option>
-        </select>
-        <input type="number" id="micQty" min="1" max="99" value="1" />
+        <div class="input-group">
+          <select id="mic">
+            <option value="Shure SM7B">Shure SM7B</option>
+            <option value="Rode NT1">Rode NT1</option>
+            <option value="Audio-Technica AT2020">Audio-Technica AT2020</option>
+          </select>
+          <input type="number" id="micQty" min="1" max="99" value="1" />
+        </div>
       </div>
 
       <div class="form-row">
         <label for="interface">Choose an Audio Interface:</label>
-        <select id="interface">
-          <option value="Focusrite Scarlett 2i2">Focusrite Scarlett 2i2</option>
-          <option value="PreSonus AudioBox USB 96">PreSonus AudioBox USB 96</option>
-          <option value="Universal Audio Volt 2">Universal Audio Volt 2</option>
-        </select>
-        <input type="number" id="interfaceQty" min="1" max="99" value="1" />
+        <div class="input-group">
+          <select id="interface">
+            <option value="Focusrite Scarlett 2i2">Focusrite Scarlett 2i2</option>
+            <option value="PreSonus AudioBox USB 96">PreSonus AudioBox USB 96</option>
+            <option value="Universal Audio Volt 2">Universal Audio Volt 2</option>
+          </select>
+          <input type="number" id="interfaceQty" min="1" max="99" value="1" />
+        </div>
       </div>
 
       <div class="form-row">
         <label for="headphones">Choose Headphones:</label>
-        <select id="headphones">
-          <option value="Audio-Technica ATH-M50x">Audio-Technica ATH-M50x</option>
-          <option value="Sony MDR-7506">Sony MDR-7506</option>
-          <option value="Beyerdynamic DT 770 PRO">Beyerdynamic DT 770 PRO</option>
-        </select>
-        <input type="number" id="headphonesQty" min="1" max="99" value="1" />
+        <div class="input-group">
+          <select id="headphones">
+            <option value="Audio-Technica ATH-M50x">Audio-Technica ATH-M50x</option>
+            <option value="Sony MDR-7506">Sony MDR-7506</option>
+            <option value="Beyerdynamic DT 770 PRO">Beyerdynamic DT 770 PRO</option>
+          </select>
+          <input type="number" id="headphonesQty" min="1" max="99" value="1" />
+        </div>
       </div>
 
       <div class="form-row">
         <label for="monitors">Choose Studio Monitors:</label>
-        <select id="monitors">
-          <option value="Yamaha HS5">Yamaha HS5</option>
-          <option value="KRK Rokit 5">KRK Rokit 5</option>
-          <option value="JBL 305P MkII">JBL 305P MkII</option>
-        </select>
-        <input type="number" id="monitorsQty" min="1" max="99" value="1" />
+        <div class="input-group">
+          <select id="monitors">
+            <option value="Yamaha HS5">Yamaha HS5</option>
+            <option value="KRK Rokit 5">KRK Rokit 5</option>
+            <option value="JBL 305P MkII">JBL 305P MkII</option>
+          </select>
+          <input type="number" id="monitorsQty" min="1" max="99" value="1" />
+        </div>
       </div>
 
       <button type="button" onclick="buildKit()">Build My Kit</button>
@@ -58,7 +66,38 @@
   </div>
 
   <div class="prebuilt-container">
-    <!-- Prebuilt kits remain unchanged -->
+    <h2>Prebuilt Kits</h2>
+
+    <div class="prebuilt-kit">
+      <h3>Starter Studio Kit - $499</h3>
+      <ul>
+        <li>Audio-Technica AT2020</li>
+        <li>Focusrite Scarlett Solo</li>
+        <li>AKG K240 Headphones</li>
+        <li>M-Audio BX5 Monitors</li>
+      </ul>
+    </div>
+
+    <div class="prebuilt-kit">
+      <h3>Beat Production Kit - $799</h3>
+      <ul>
+        <li>Rode NT1</li>
+        <li>Native Instruments Komplete Audio 2</li>
+        <li>Yamaha HS5</li>
+        <li>FL Studio Producer Edition</li>
+      </ul>
+    </div>
+
+    <div class="prebuilt-kit">
+      <h3>Home Band Recording Kit - $1299</h3>
+      <ul>
+        <li>Shure SM7B</li>
+        <li>Focusrite Scarlett 18i8</li>
+        <li>Multiple Headphones</li>
+        <li>KRK Rokit 8 Monitors</li>
+        <li>Reaper DAW License</li>
+      </ul>
+    </div>
   </div>
 
   <footer>
@@ -72,20 +111,23 @@
     function buildKit() {
       const mic = document.getElementById('mic').value;
       const micQty = document.getElementById('micQty').value;
-      const interfaceVal = document.getElementById('interface').value;
+
+      const interface = document.getElementById('interface').value;
       const interfaceQty = document.getElementById('interfaceQty').value;
+
       const headphones = document.getElementById('headphones').value;
       const headphonesQty = document.getElementById('headphonesQty').value;
+
       const monitors = document.getElementById('monitors').value;
       const monitorsQty = document.getElementById('monitorsQty').value;
 
       const output = `
         <h3>Your Custom Studio Kit:</h3>
         <ul>
-          <li><strong>Microphone:</strong> ${mic} × ${micQty}</li>
-          <li><strong>Audio Interface:</strong> ${interfaceVal} × ${interfaceQty}</li>
-          <li><strong>Headphones:</strong> ${headphones} × ${headphonesQty}</li>
-          <li><strong>Studio Monitors:</strong> ${monitors} × ${monitorsQty}</li>
+          <li><strong>Microphone (${micQty}):</strong> ${mic}</li>
+          <li><strong>Audio Interface (${interfaceQty}):</strong> ${interface}</li>
+          <li><strong>Headphones (${headphonesQty}):</strong> ${headphones}</li>
+          <li><strong>Studio Monitors (${monitorsQty}):</strong> ${monitors}</li>
         </ul>
       `;
 
