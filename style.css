@@ -1,123 +1,80 @@
-body {
-  font-family: Arial, sans-serif;
-  background: url('Background/Background1.jpg') no-repeat center center fixed;
-  background-size: cover;
-  margin: 0;
-  padding: 2rem;
-  color: #333;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Build Your Studio Kit</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Build Your Studio Kit</h1>
 
-.container {
-  max-width: 600px;
-  margin: auto;
-  background: rgba(255, 255, 255, 0.85);
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+    <form id="studioForm">
+      <label for="mic">Choose a Microphone:</label>
+      <select id="mic">
+        <option value="Shure SM7B">Shure SM7B</option>
+        <option value="Rode NT1">Rode NT1</option>
+        <option value="Audio-Technica AT2020">Audio-Technica AT2020</option>
+      </select>
 
-h1 {
-  text-align: center;
-  color: #333;
-}
+      <label for="interface">Choose an Audio Interface:</label>
+      <select id="interface">
+        <option value="Focusrite Scarlett 2i2">Focusrite Scarlett 2i2</option>
+        <option value="PreSonus AudioBox USB 96">PreSonus AudioBox USB 96</option>
+        <option value="Universal Audio Volt 2">Universal Audio Volt 2</option>
+      </select>
 
-label {
-  display: block;
-  margin-top: 1rem;
-}
+      <label for="headphones">Choose Headphones:</label>
+      <select id="headphones">
+        <option value="Audio-Technica ATH-M50x">Audio-Technica ATH-M50x</option>
+        <option value="Sony MDR-7506">Sony MDR-7506</option>
+        <option value="Beyerdynamic DT 770 PRO">Beyerdynamic DT 770 PRO</option>
+      </select>
 
-select, button {
-  width: 100%;
-  padding: 0.5rem;
-  margin-top: 0.5rem;
-}
+      <label for="monitors">Choose Studio Monitors:</label>
+      <select id="monitors">
+        <option value="Yamaha HS5">Yamaha HS5</option>
+        <option value="KRK Rokit 5">KRK Rokit 5</option>
+        <option value="JBL 305P MkII">JBL 305P MkII</option>
+      </select>
 
-button {
-  background-color: #ff4c4c;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 4px;
-}
+      <button type="button" onclick="buildKit()">Build My Kit</button>
+    </form>
 
-button:hover {
-  background-color: #cc0000;
-}
+    <div class="output" id="kitOutput"></div>
+  </div>
 
-.output {
-  margin-top: 2rem;
-  padding: 1rem;
-  border-radius: 6px;
-}
+  <footer>
+    <label class="toggle-label">
+      <input type="checkbox" id="darkModeToggle" />
+      <span class="toggle-slider"></span> Dark Mode
+    </label>
+  </footer>
 
-footer {
-  display: flex;
-  justify-content: center;
-  padding: 1rem 0;
-}
+  <script>
+    function buildKit() {
+      const mic = document.getElementById('mic').value;
+      const interface = document.getElementById('interface').value;
+      const headphones = document.getElementById('headphones').value;
+      const monitors = document.getElementById('monitors').value;
 
-.toggle-label {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 30px;
-}
+      const output = `
+        <h3>Your Custom Studio Kit:</h3>
+        <ul>
+          <li><strong>Microphone:</strong> ${mic}</li>
+          <li><strong>Audio Interface:</strong> ${interface}</li>
+          <li><strong>Headphones:</strong> ${headphones}</li>
+          <li><strong>Studio Monitors:</strong> ${monitors}</li>
+        </ul>
+      `;
 
-.toggle-label input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
+      document.getElementById('kitOutput').innerHTML = output;
+    }
 
-.toggle-slider {
-  position: absolute;
-  cursor: pointer;
-  background-color: #ccc;
-  border-radius: 34px;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transition: 0.4s;
-}
-
-.toggle-slider:before {
-  position: absolute;
-  content: "";
-  height: 22px;
-  width: 22px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  transition: 0.4s;
-  border-radius: 50%;
-}
-
-.toggle-label input:checked + .toggle-slider {
-  background-color: #ff4c4c;
-}
-
-.toggle-label input:checked + .toggle-slider:before {
-  transform: translateX(30px);
-}
-
-/* Dark Mode */
-body.dark-mode {
-  background-color: #111;
-  background-image: url('Background/Background1.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: #eee;
-}
-
-body.dark-mode .container {
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
-}
-
-body.dark-mode h1,
-body.dark-mode label,
-body.dark-mode .toggle-label {
-  color: #ff4c4c;
-}
+    document.getElementById('darkModeToggle').addEventListener('change', function () {
+      document.body.classList.toggle('dark-mode');
+    });
+  </script>
+</body>
+</html>
