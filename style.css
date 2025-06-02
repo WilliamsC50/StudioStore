@@ -4,129 +4,91 @@ body {
   padding: 0;
   background: url('Background/Background1.jpg') no-repeat center center fixed;
   background-size: cover;
-  color: #333;
-}
-
-.dark-mode {
-  background-color: #121212;
-  color: #f0f0f0;
+  color: #fff;
 }
 
 .container {
-  background-color: rgba(255, 255, 255, 0.9);
-  margin: 30px auto;
   padding: 20px;
-  width: 90%;
+  background-color: rgba(0, 0, 0, 0.7);
+  margin: 20px auto;
   max-width: 800px;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
-.dark-mode .container {
-  background-color: rgba(0, 0, 0, 0.8);
+h1 {
+  color: #ff4b4b;
 }
 
-form label {
-  display: block;
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-.form-row {
+.form-group {
   display: flex;
   align-items: center;
-  margin-top: 10px;
+  justify-content: space-between;
+  margin: 10px 0;
 }
 
-select {
+.item-select {
   flex: 1;
-  padding: 5px;
   margin-right: 10px;
 }
 
-.qty-box {
+.quantity {
   width: 60px;
-  padding: 5px;
 }
 
 button {
-  margin-top: 15px;
-  padding: 10px 20px;
-  background-color: #cc0000;
+  background-color: #ff4b4b;
   color: white;
+  padding: 10px 15px;
   border: none;
-  border-radius: 8px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #990000;
-}
-
-.output {
-  margin-top: 20px;
-  padding: 10px;
-  background-color: #eee;
-  border-radius: 8px;
-}
-
-.dark-mode .output {
-  background-color: #333;
+  background-color: #e33c3c;
 }
 
 footer {
+  margin-top: 30px;
   text-align: center;
-  margin: 30px 0;
 }
 
 .toggle-label {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
-
-.toggle-label input {
-  display: none;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
 }
 
 .toggle-slider {
-  position: absolute;
-  top: 0; left: 0;
-  right: 0; bottom: 0;
+  width: 40px;
+  height: 20px;
   background-color: #ccc;
-  border-radius: 34px;
-  transition: .4s;
+  border-radius: 20px;
+  margin: 0 10px;
+  position: relative;
 }
 
-.toggle-slider:before {
-  position: absolute;
+.toggle-slider::before {
   content: "";
-  height: 26px; width: 26px;
-  left: 4px; bottom: 4px;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
   background-color: white;
-  transition: .4s;
   border-radius: 50%;
+  transition: 0.3s;
 }
 
-.toggle-label input:checked + .toggle-slider {
-  background-color: #2196F3;
+input[type="checkbox"]:checked + .toggle-slider::before {
+  transform: translateX(20px);
 }
 
-.toggle-label input:checked + .toggle-slider:before {
-  transform: translateX(26px);
+.dark-mode {
+  background-color: #111;
+  color: #eee;
 }
 
-.prebuilt {
-  margin-top: 40px;
-}
-
-.kit-box {
-  background-color: #f5f5f5;
-  margin: 15px 0;
-  padding: 15px;
-  border-radius: 8px;
-}
-
-.dark-mode .kit-box {
-  background-color: #2b2b2b;
+.dark-mode h1 {
+  color: #ff4b4b;
 }
