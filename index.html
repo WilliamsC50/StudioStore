@@ -9,70 +9,55 @@
 <body>
   <div class="container">
     <h1>Build Your Studio Kit</h1>
+
     <form id="studioForm">
-      <!-- Microphones -->
-      <div id="micSection">
+      <div class="select-section" id="micSection">
         <label>Choose a Microphone:</label>
-        <div class="form-row">
-          <div class="input-group">
-            <select name="mic">
-              <option value="Shure SM7B">Shure SM7B</option>
-              <option value="Rode NT1">Rode NT1</option>
-              <option value="Audio-Technica AT2020">Audio-Technica AT2020</option>
-            </select>
-            <input type="number" min="1" max="99" value="1" />
-          </div>
+        <div class="select-group">
+          <select>
+            <option value="Shure SM7B">Shure SM7B</option>
+            <option value="RØDE NT1">RØDE NT1</option>
+            <option value="Audio-Technica AT2020">Audio-Technica AT2020</option>
+          </select>
+          <input type="number" min="1" max="99" value="1" />
         </div>
       </div>
-      <button type="button" onclick="addOption('micSection', 'mic')">Add Another Microphone</button>
 
-      <!-- Interfaces -->
-      <div id="interfaceSection">
+      <div class="select-section" id="interfaceSection">
         <label>Choose an Audio Interface:</label>
-        <div class="form-row">
-          <div class="input-group">
-            <select name="interface">
-              <option value="Focusrite Scarlett 2i2">Focusrite Scarlett 2i2</option>
-              <option value="PreSonus AudioBox USB 96">PreSonus AudioBox USB 96</option>
-              <option value="Universal Audio Volt 2">Universal Audio Volt 2</option>
-            </select>
-            <input type="number" min="1" max="99" value="1" />
-          </div>
+        <div class="select-group">
+          <select>
+            <option value="Focusrite Scarlett 2i2">Focusrite Scarlett 2i2</option>
+            <option value="PreSonus AudioBox USB 96">PreSonus AudioBox USB 96</option>
+            <option value="Universal Audio Volt 2">Universal Audio Volt 2</option>
+          </select>
+          <input type="number" min="1" max="99" value="1" />
         </div>
       </div>
-      <button type="button" onclick="addOption('interfaceSection', 'interface')">Add Another Interface</button>
 
-      <!-- Headphones -->
-      <div id="headphonesSection">
+      <div class="select-section" id="headphonesSection">
         <label>Choose Headphones:</label>
-        <div class="form-row">
-          <div class="input-group">
-            <select name="headphones">
-              <option value="Audio-Technica ATH-M50x">Audio-Technica ATH-M50x</option>
-              <option value="Sony MDR-7506">Sony MDR-7506</option>
-              <option value="Beyerdynamic DT 770 PRO">Beyerdynamic DT 770 PRO</option>
-            </select>
-            <input type="number" min="1" max="99" value="1" />
-          </div>
+        <div class="select-group">
+          <select>
+            <option value="Audio-Technica ATH-M50x">Audio-Technica ATH-M50x</option>
+            <option value="Sony MDR-7506">Sony MDR-7506</option>
+            <option value="Beyerdynamic DT 770 PRO">Beyerdynamic DT 770 PRO</option>
+          </select>
+          <input type="number" min="1" max="99" value="1" />
         </div>
       </div>
-      <button type="button" onclick="addOption('headphonesSection', 'headphones')">Add Another Headphone</button>
 
-      <!-- Monitors -->
-      <div id="monitorsSection">
+      <div class="select-section" id="monitorsSection">
         <label>Choose Studio Monitors:</label>
-        <div class="form-row">
-          <div class="input-group">
-            <select name="monitors">
-              <option value="Yamaha HS5">Yamaha HS5</option>
-              <option value="KRK Rokit 5">KRK Rokit 5</option>
-              <option value="JBL 305P MkII">JBL 305P MkII</option>
-            </select>
-            <input type="number" min="1" max="99" value="1" />
-          </div>
+        <div class="select-group">
+          <select>
+            <option value="Yamaha HS5">Yamaha HS5</option>
+            <option value="KRK Rokit 5 G4">KRK Rokit 5 G4</option>
+            <option value="JBL 305P MkII">JBL 305P MkII</option>
+          </select>
+          <input type="number" min="1" max="99" value="1" />
         </div>
       </div>
-      <button type="button" onclick="addOption('monitorsSection', 'monitors')">Add Another Monitor</button>
 
       <button type="button" onclick="buildKit()">Build My Kit</button>
     </form>
@@ -89,6 +74,21 @@
 
   <script>
     function buildKit() {
+      const prices = {
+        "Shure SM7B": 399.00,
+        "RØDE NT1": 269.00,
+        "Audio-Technica AT2020": 99.00,
+        "Focusrite Scarlett 2i2": 219.99,
+        "PreSonus AudioBox USB 96": 89.99,
+        "Universal Audio Volt 2": 189.00,
+        "Audio-Technica ATH-M50x": 169.00,
+        "Sony MDR-7506": 99.99,
+        "Beyerdynamic DT 770 PRO": 179.00,
+        "Yamaha HS5": 199.99,
+        "KRK Rokit 5 G4": 179.00,
+        "JBL 305P MkII": 149.00
+      };
+
       const output = {
         mic: [],
         interface: [],
@@ -96,37 +96,29 @@
         monitors: []
       };
 
+      let total = 0;
+
       ['mic', 'interface', 'headphones', 'monitors'].forEach(type => {
         const selects = document.querySelectorAll(`#${type}Section select`);
         const quantities = document.querySelectorAll(`#${type}Section input[type="number"]`);
         selects.forEach((select, index) => {
-          output[type].push({ item: select.value, quantity: quantities[index].value });
+          const item = select.value;
+          const quantity = parseInt(quantities[index].value);
+          const price = prices[item] || 0;
+          const subtotal = price * quantity;
+          total += subtotal;
+          output[type].push({ item, quantity, price, subtotal });
         });
       });
 
       let html = '<h3>Your Custom Studio Kit:</h3><ul>';
       for (const [key, items] of Object.entries(output)) {
         items.forEach(obj => {
-          html += `<li><strong>${key.charAt(0).toUpperCase() + key.slice(1)}:</strong> ${obj.item} (x${obj.quantity})</li>`;
+          html += `<li><strong>${key.charAt(0).toUpperCase() + key.slice(1)}:</strong> ${obj.item} (x${obj.quantity}) - $${obj.subtotal.toFixed(2)}</li>`;
         });
       }
-      html += '</ul>';
+      html += `</ul><h3>Total Price: $${total.toFixed(2)}</h3>`;
       document.getElementById('kitOutput').innerHTML = html;
-    }
-
-    function addOption(sectionId, type) {
-      const section = document.getElementById(sectionId);
-      const row = document.createElement('div');
-      row.classList.add('form-row');
-      row.innerHTML = `
-        <div class="input-group">
-          <select name="${type}">
-            ${document.querySelector(`#${sectionId} select`).innerHTML}
-          </select>
-          <input type="number" min="1" max="99" value="1" />
-        </div>
-      `;
-      section.appendChild(row);
     }
 
     document.getElementById('darkModeToggle').addEventListener('change', function () {
