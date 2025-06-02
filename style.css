@@ -1,94 +1,160 @@
-body {
-  font-family: Arial, sans-serif;
+/* Reset & Base Styles */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: url('Background/Background1.jpg') no-repeat center center fixed;
   background-size: cover;
-  color: #fff;
-}
-
-.container {
+  color: #111;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0.7);
-  margin: 20px auto;
+}
+
+/* Container */
+.container {
   max-width: 800px;
-  border-radius: 8px;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
+/* Header */
 h1 {
-  color: #ff4b4b;
+  text-align: center;
+  color: #b30000;
+  margin-bottom: 30px;
 }
 
-.form-group {
+/* Form Rows */
+.form-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 10px 0;
+  margin-bottom: 15px;
+  gap: 10px;
 }
 
-.item-select {
+.form-row label {
   flex: 1;
-  margin-right: 10px;
+  font-weight: bold;
 }
 
-.quantity {
+.form-row select {
+  flex: 2;
+  padding: 8px;
+}
+
+.form-row input[type="number"] {
   width: 60px;
+  padding: 6px;
 }
 
+/* Button */
 button {
-  background-color: #ff4b4b;
-  color: white;
-  padding: 10px 15px;
+  display: block;
+  margin: 25px auto 15px;
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #b30000;
+  color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 30px;
   cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 button:hover {
-  background-color: #e33c3c;
+  background-color: #800000;
 }
 
+/* Output Box */
+.output {
+  background-color: rgba(240, 240, 240, 0.95);
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  color: #111;
+}
+
+.output h3 {
+  margin-bottom: 10px;
+}
+
+/* Footer Toggle */
 footer {
-  margin-top: 30px;
   text-align: center;
+  margin-top: 40px;
 }
 
 .toggle-label {
   display: inline-flex;
   align-items: center;
-  cursor: pointer;
+  gap: 10px;
+  font-weight: bold;
 }
 
+/* iOS-style Toggle */
 .toggle-slider {
-  width: 40px;
-  height: 20px;
-  background-color: #ccc;
-  border-radius: 20px;
-  margin: 0 10px;
   position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+  background-color: #ccc;
+  border-radius: 26px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .toggle-slider::before {
   content: "";
   position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 16px;
-  height: 16px;
+  left: 4px;
+  top: 4px;
+  width: 18px;
+  height: 18px;
   background-color: white;
   border-radius: 50%;
-  transition: 0.3s;
+  transition: transform 0.3s ease;
+}
+
+input[type="checkbox"]:checked + .toggle-slider {
+  background-color: #b30000;
 }
 
 input[type="checkbox"]:checked + .toggle-slider::before {
-  transform: translateX(20px);
+  transform: translateX(24px);
 }
 
+/* Dark Mode Styles */
 .dark-mode {
   background-color: #111;
-  color: #eee;
+  color: #f5f5f5;
+}
+
+.dark-mode .container {
+  background-color: rgba(30, 30, 30, 0.95);
+}
+
+.dark-mode .output {
+  background-color: rgba(60, 60, 60, 0.95);
+  color: #f5f5f5;
 }
 
 .dark-mode h1 {
-  color: #ff4b4b;
+  color: #b30000;
+}
+
+.dark-mode button {
+  background-color: #b30000;
+}
+
+.dark-mode button:hover {
+  background-color: #800000;
 }
