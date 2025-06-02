@@ -2,87 +2,104 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Studio Kit Builder</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <h1>Studio Kit Builder</h1>
-    <label class="toggle-label">
-      <input type="checkbox" id="darkModeToggle" />
-      <span class="toggle-slider"></span>
-    </label>
   </header>
 
-  <main class="container">
-    <section>
-      <h2>Customize Your Kit</h2>
-      <form id="kitForm">
-        <div class="form-group" id="micContainer">
-          <label>Microphones</label>
-          <div class="select-row">
-            <select name="mic"></select>
-            <input type="number" id="micQty0" min="1" max="99" value="1" />
-          </div>
-          <button type="button" onclick="addDropdown('mic')">Add Microphone</button>
+  <main>
+    <section class="builder">
+      <h2>Build Your Studio Kit</h2>
+      <form id="studioForm">
+        <div class="form-group">
+          <label for="mic">Microphone:</label>
+          <select id="mic">
+            <option value="N/A">N/A</option>
+            <option value="Shure SM7B">Shure SM7B</option>
+            <option value="Rode NT1">Rode NT1</option>
+            <option value="Audio-Technica AT2020">Audio-Technica AT2020</option>
+          </select>
+          <input type="number" min="1" max="99" value="1" class="qty" id="qtyMic" />
         </div>
 
-        <div class="form-group" id="interfaceContainer">
-          <label>Audio Interfaces</label>
-          <div class="select-row">
-            <select name="interface"></select>
-            <input type="number" id="interfaceQty0" min="1" max="99" value="1" />
-          </div>
-          <button type="button" onclick="addDropdown('interface')">Add Interface</button>
+        <div class="form-group">
+          <label for="interface">Audio Interface:</label>
+          <select id="interface">
+            <option value="N/A">N/A</option>
+            <option value="Focusrite Scarlett 2i2">Focusrite Scarlett 2i2</option>
+            <option value="Universal Audio Volt 2">Universal Audio Volt 2</option>
+            <option value="PreSonus AudioBox USB 96">PreSonus AudioBox USB 96</option>
+          </select>
+          <input type="number" min="1" max="99" value="1" class="qty" id="qtyInterface" />
         </div>
 
-        <div class="form-group" id="headphonesContainer">
-          <label>Headphones</label>
-          <div class="select-row">
-            <select name="headphones"></select>
-            <input type="number" id="headphonesQty0" min="1" max="99" value="1" />
-          </div>
-          <button type="button" onclick="addDropdown('headphones')">Add Headphones</button>
+        <div class="form-group">
+          <label for="headphones">Headphones:</label>
+          <select id="headphones">
+            <option value="N/A">N/A</option>
+            <option value="Audio-Technica ATH-M50x">Audio-Technica ATH-M50x</option>
+            <option value="Sony MDR-7506">Sony MDR-7506</option>
+            <option value="Beyerdynamic DT 770 PRO">Beyerdynamic DT 770 PRO</option>
+          </select>
+          <input type="number" min="1" max="99" value="1" class="qty" id="qtyHeadphones" />
         </div>
 
-        <div class="form-group" id="monitorsContainer">
-          <label>Studio Monitors</label>
-          <div class="select-row">
-            <select name="monitors"></select>
-            <input type="number" id="monitorsQty0" min="1" max="99" value="1" />
-          </div>
-          <button type="button" onclick="addDropdown('monitors')">Add Monitor</button>
+        <div class="form-group">
+          <label for="monitors">Studio Monitors:</label>
+          <select id="monitors">
+            <option value="N/A">N/A</option>
+            <option value="Yamaha HS5">Yamaha HS5</option>
+            <option value="KRK Rokit 5">KRK Rokit 5</option>
+            <option value="JBL 305P MkII">JBL 305P MkII</option>
+          </select>
+          <input type="number" min="1" max="99" value="1" class="qty" id="qtyMonitors" />
         </div>
 
-        <div class="form-group" id="consoleContainer">
-          <label>Mixing Consoles</label>
-          <div class="select-row">
-            <select name="console"></select>
-            <input type="number" id="consoleQty0" min="1" max="99" value="1" />
-          </div>
-          <button type="button" onclick="addDropdown('console')">Add Console</button>
-        </div>
-
-        <button type="button" id="buildKitBtn">Build My Kit</button>
+        <button type="button" onclick="buildKit()">Build My Kit</button>
       </form>
+
+      <div id="kitOutput" class="output"></div>
     </section>
 
-    <section class="output" id="kitOutput"></section>
-
-    <section class="prebuilt-kits">
-      <h3>Prebuilt Kits</h3>
-      <ul>
-        <li>Starter Kit: Shure SM7B, Focusrite Scarlett 2i2, ATH-M50x</li>
-        <li>Pro Kit: Neumann TLM 103, Apollo Twin X, Beyerdynamic DT 770 PRO</li>
-        <li>Beat Producer Kit: Rode NT1, Universal Audio Volt 2, Sony MDR-7506</li>
-        <li>Band Recording Kit: AKG C414 XLII, PreSonus StudioLive AR8c, Focal Listen Pro</li>
-      </ul>
+    <section class="prebuilt">
+      <h2>Prebuilt Kits</h2>
+      <div class="kit">
+        <h3>Podcast Starter Kit - $599</h3>
+        <ul>
+          <li>Shure SM58 Microphone</li>
+          <li>Focusrite Scarlett Solo</li>
+          <li>Audio-Technica ATH-M20x</li>
+          <li>Mini Tripod Stand</li>
+        </ul>
+      </div>
+      <div class="kit">
+        <h3>Beat Production Kit - $799</h3>
+        <ul>
+          <li>Akai MPK Mini MK3</li>
+          <li>Focusrite Scarlett 2i2</li>
+          <li>Yamaha HS5 Monitors</li>
+        </ul>
+      </div>
+      <div class="kit">
+        <h3>Home Recording Band Kit - $1299</h3>
+        <ul>
+          <li>Zoom L8 Mixer</li>
+          <li>2x Shure SM57 + 1x SM58</li>
+          <li>Audio-Technica ATH-M50x</li>
+        </ul>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Studio Kit Builder</p>
+    <label class="dark-toggle">
+      <input type="checkbox" id="darkModeToggle" />
+      <span class="toggle-slider"></span> Dark Mode
+    </label>
   </footer>
 
   <script src="script.js"></script>

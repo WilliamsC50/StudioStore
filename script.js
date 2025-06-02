@@ -1,146 +1,90 @@
-const itemPrices = {
-  microphones: {
-    "N/A": 0,
-    "Shure SM7B": 399,
-    "Rode NT1": 269,
-    "Audio-Technica AT2020": 99,
-    "Neumann TLM 103": 1395,
-    "AKG C414 XLII": 1099,
-    "Sennheiser MK4": 299,
-    "Blue Yeti Pro": 249,
-    "Electro-Voice RE20": 449,
-    "Beyerdynamic M 160": 699,
-    "Lewitt LCT 440 PURE": 269,
-    "Warm Audio WA-47": 899
-  },
-  interfaces: {
-    "N/A": 0,
-    "Focusrite Scarlett 2i2": 179,
-    "PreSonus AudioBox USB 96": 99,
-    "Universal Audio Volt 2": 199,
-    "Apollo Twin X": 899,
-    "Behringer UMC404HD": 129,
-    "MOTU M2": 199,
-    "Steinberg UR22C": 189,
-    "Audient iD14": 299,
-    "SSL 2+": 279,
-    "Arturia MiniFuse 2": 149,
-    "Native Instruments Komplete Audio 2": 139
-  },
-  headphones: {
-    "N/A": 0,
-    "Audio-Technica ATH-M50x": 169,
-    "Sony MDR-7506": 99,
-    "Beyerdynamic DT 770 PRO": 179,
-    "Sennheiser HD 650": 399,
-    "Shure SRH1540": 499,
-    "Focal Listen Professional": 299,
-    "AKG K240": 69,
-    "Audeze LCD-1": 399,
-    "Fostex T50RP": 159,
-    "KRK KNS 8400": 149,
-    "Status Audio CB-1": 79
-  },
-  monitors: {
-    "N/A": 0,
-    "Yamaha HS5": 199,
-    "KRK Rokit 5": 179,
-    "JBL 305P MkII": 149,
-    "Adam Audio T5V": 249,
-    "Focal Alpha 50 Evo": 299,
-    "PreSonus Eris E5": 149,
-    "Genelec 8010A": 350,
-    "IK Multimedia iLoud": 299,
-    "Mackie CR4-X": 119,
-    "Tannoy Reveal 502": 129,
-    "Behringer B1030A": 169
-  },
-  mixers: {
-    "N/A": 0,
-    "Behringer Xenyx Q802USB": 99,
-    "Yamaha MG10XU": 229,
-    "Mackie ProFX10v3": 239,
-    "Allen & Heath ZEDi-10": 249,
-    "Soundcraft Notepad-12FX": 199,
-    "PreSonus StudioLive AR8c": 599,
-    "Tascam Model 12": 599,
-    "Zoom LiveTrak L-12": 649,
-    "Midas MR18": 999,
-    "SSL BiG SiX": 2299
-  }
+document.addEventListener('DOMContentLoaded', () => {
+  const darkToggle = document.getElementById('darkModeToggle');
+
+  darkToggle.addEventListener('change', () => {
+    document.body.classList.toggle('dark-mode');
+  });
+
+  document.getElementById('studioForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    buildKit();
+  });
+
+  document.getElementById('addMic').addEventListener('click', () => addItem('mic'));
+  document.getElementById('addInterface').addEventListener('click', () => addItem('interface'));
+  document.getElementById('addHeadphones').addEventListener('click', () => addItem('headphones'));
+  document.getElementById('addMonitors').addEventListener('click', () => addItem('monitors'));
+  document.getElementById('addMixer').addEventListener('click', () => addItem('mixer'));
+});
+
+const prices = {
+  // Microphones
+  "Shure SM7B": 399, "Rode NT1": 269, "Audio-Technica AT2020": 99,
+  "Neumann TLM 103": 1395, "AKG C414 XLII": 1199, "Sennheiser MK4": 299,
+  "Electro-Voice RE20": 449, "Blue Yeti Pro": 249, "Beyer M160": 699, "Aston Origin": 299,
+  "N/A": 0,
+
+  // Interfaces
+  "Focusrite Scarlett 2i2": 189, "PreSonus AudioBox USB 96": 99, "Universal Audio Volt 2": 189,
+  "MOTU M2": 199, "Audient iD14": 299, "Steinberg UR22C": 189,
+  "SSL 2+": 279, "Behringer UMC404HD": 139, "Apollo Twin X Duo": 1099, "Tascam US-2x2HR": 149,
+
+  // Headphones
+  "Audio-Technica ATH-M50x": 169, "Sony MDR-7506": 99, "Beyerdynamic DT 770 PRO": 179,
+  "Sennheiser HD 280 Pro": 99, "AKG K240": 69, "Focal Listen Pro": 299,
+  "Shure SRH840": 149, "Neumann NDH 20": 499, "Audeze LCD-X": 1199, "Status Audio CB-1": 79,
+
+  // Monitors
+  "Yamaha HS5": 199, "KRK Rokit 5": 179, "JBL 305P MkII": 149,
+  "Adam Audio T5V": 249, "Focal Alpha 65": 349, "Genelec 8010A": 295,
+  "Presonus Eris E5": 149, "IK Multimedia iLoud": 299, "Neumann KH 120": 749, "Mackie CR4-X": 129,
+
+  // Mixers
+  "Behringer Xenyx Q802USB": 99, "Yamaha MG10XU": 229, "Mackie ProFX12v3": 329,
+  "Soundcraft Signature 12MTK": 549, "Allen & Heath ZEDi-10FX": 299, "Presonus StudioLive AR12c": 599,
+  "Tascam Model 12": 699, "Zoom LiveTrak L-8": 399, "A&H QU-16": 2199, "SSL SiX": 1499
 };
 
 function buildKit() {
-  const categories = ['microphones', 'interfaces', 'headphones', 'monitors', 'mixers'];
+  const categories = ['mic', 'interface', 'headphones', 'monitors', 'mixer'];
+  let output = `<h3>Your Custom Studio Kit:</h3><ul>`;
   let total = 0;
-  let outputHTML = '<h3>Your Custom Studio Kit:</h3><ul>';
 
   categories.forEach(category => {
-    const selects = document.querySelectorAll(`select[data-category="${category}"]`);
-    selects.forEach((select, index) => {
-      const quantityInput = document.getElementById(`${category}-quantity-${index}`);
-      const quantity = parseInt(quantityInput.value) || 0;
-      const selectedItem = select.value;
-      const price = itemPrices[category][selectedItem] || 0;
-      const subtotal = price * quantity;
+    const container = document.getElementById(`${category}Container`);
+    const selects = container.querySelectorAll('select');
+    const qtyInputs = container.querySelectorAll('input[type="number"]');
 
-      if (quantity > 0 && selectedItem !== "N/A") {
-        outputHTML += `<li><strong>${selectedItem}</strong> x${quantity} - $${subtotal.toFixed(2)}</li>`;
-        total += subtotal;
+    selects.forEach((select, i) => {
+      const item = select.value;
+      const qty = parseInt(qtyInputs[i].value) || 0;
+      const price = prices[item] || 0;
+      const lineTotal = price * qty;
+      total += lineTotal;
+
+      if (item !== 'N/A' && qty > 0) {
+        output += `<li><strong>${category.charAt(0).toUpperCase() + category.slice(1)}:</strong> ${item} x${qty} - $${lineTotal.toFixed(2)}</li>`;
       }
     });
   });
 
-  outputHTML += `</ul><h4>Total: $${total.toFixed(2)}</h4>`;
-  document.getElementById('kitOutput').innerHTML = outputHTML;
+  output += `</ul><h4>Total: $${total.toFixed(2)}</h4>`;
+  document.getElementById('kitOutput').innerHTML = output;
 }
 
-// Dark mode toggle
-document.getElementById('darkModeToggle').addEventListener('change', function () {
-  document.body.classList.toggle('dark-mode');
-});
-
-// Add and remove item functionality
-function addKitItem(category) {
-  const container = document.getElementById(`${category}-container`);
-  const index = container.querySelectorAll('select').length;
-
-  const wrapper = document.createElement('div');
-  wrapper.className = 'select-row';
-
-  const select = document.createElement('select');
-  select.setAttribute('data-category', category);
-  select.id = `${category}-select-${index}`;
-
-  const naOption = document.createElement('option');
-  naOption.value = 'N/A';
-  naOption.text = 'N/A';
-  select.appendChild(naOption);
-
-  Object.keys(itemPrices[category]).forEach(item => {
-    if (item !== 'N/A') {
-      const option = document.createElement('option');
-      option.value = item;
-      option.text = item;
-      select.appendChild(option);
-    }
-  });
-
-  const quantity = document.createElement('input');
-  quantity.type = 'number';
-  quantity.min = '0';
-  quantity.max = '99';
-  quantity.value = '1';
-  quantity.id = `${category}-quantity-${index}`;
+function addItem(category) {
+  const container = document.getElementById(`${category}Container`);
+  const original = container.querySelector('.form-group');
+  const clone = original.cloneNode(true);
+  clone.querySelector('select').selectedIndex = 0;
+  clone.querySelector('input[type="number"]').value = 1;
 
   const removeBtn = document.createElement('button');
+  removeBtn.textContent = "Remove";
+  removeBtn.classList.add('remove-btn');
   removeBtn.type = 'button';
-  removeBtn.textContent = 'Remove';
-  removeBtn.onclick = () => wrapper.remove();
+  removeBtn.onclick = () => clone.remove();
 
-  wrapper.appendChild(select);
-  wrapper.appendChild(quantity);
-  wrapper.appendChild(removeBtn);
-
-  container.appendChild(wrapper);
+  clone.appendChild(removeBtn);
+  container.appendChild(clone);
 }
