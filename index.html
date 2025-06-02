@@ -9,95 +9,75 @@
 <body>
   <div class="container">
     <h1>Build Your Studio Kit</h1>
-
     <form id="studioForm">
-      <div class="form-row">
-        <label for="mic">Choose a Microphone:</label>
-        <div class="input-group">
-          <select id="mic">
-            <option value="Shure SM7B">Shure SM7B</option>
-            <option value="Rode NT1">Rode NT1</option>
-            <option value="Audio-Technica AT2020">Audio-Technica AT2020</option>
-          </select>
-          <input type="number" id="micQty" min="1" max="99" value="1" />
+      <!-- Microphones -->
+      <div id="micSection">
+        <label>Choose a Microphone:</label>
+        <div class="form-row">
+          <div class="input-group">
+            <select name="mic">
+              <option value="Shure SM7B">Shure SM7B</option>
+              <option value="Rode NT1">Rode NT1</option>
+              <option value="Audio-Technica AT2020">Audio-Technica AT2020</option>
+            </select>
+            <input type="number" min="1" max="99" value="1" />
+          </div>
         </div>
       </div>
+      <button type="button" onclick="addOption('micSection', 'mic')">Add Another Microphone</button>
 
-      <div class="form-row">
-        <label for="interface">Choose an Audio Interface:</label>
-        <div class="input-group">
-          <select id="interface">
-            <option value="Focusrite Scarlett 2i2">Focusrite Scarlett 2i2</option>
-            <option value="PreSonus AudioBox USB 96">PreSonus AudioBox USB 96</option>
-            <option value="Universal Audio Volt 2">Universal Audio Volt 2</option>
-          </select>
-          <input type="number" id="interfaceQty" min="1" max="99" value="1" />
+      <!-- Interfaces -->
+      <div id="interfaceSection">
+        <label>Choose an Audio Interface:</label>
+        <div class="form-row">
+          <div class="input-group">
+            <select name="interface">
+              <option value="Focusrite Scarlett 2i2">Focusrite Scarlett 2i2</option>
+              <option value="PreSonus AudioBox USB 96">PreSonus AudioBox USB 96</option>
+              <option value="Universal Audio Volt 2">Universal Audio Volt 2</option>
+            </select>
+            <input type="number" min="1" max="99" value="1" />
+          </div>
         </div>
       </div>
+      <button type="button" onclick="addOption('interfaceSection', 'interface')">Add Another Interface</button>
 
-      <div class="form-row">
-        <label for="headphones">Choose Headphones:</label>
-        <div class="input-group">
-          <select id="headphones">
-            <option value="Audio-Technica ATH-M50x">Audio-Technica ATH-M50x</option>
-            <option value="Sony MDR-7506">Sony MDR-7506</option>
-            <option value="Beyerdynamic DT 770 PRO">Beyerdynamic DT 770 PRO</option>
-          </select>
-          <input type="number" id="headphonesQty" min="1" max="99" value="1" />
+      <!-- Headphones -->
+      <div id="headphonesSection">
+        <label>Choose Headphones:</label>
+        <div class="form-row">
+          <div class="input-group">
+            <select name="headphones">
+              <option value="Audio-Technica ATH-M50x">Audio-Technica ATH-M50x</option>
+              <option value="Sony MDR-7506">Sony MDR-7506</option>
+              <option value="Beyerdynamic DT 770 PRO">Beyerdynamic DT 770 PRO</option>
+            </select>
+            <input type="number" min="1" max="99" value="1" />
+          </div>
         </div>
       </div>
+      <button type="button" onclick="addOption('headphonesSection', 'headphones')">Add Another Headphone</button>
 
-      <div class="form-row">
-        <label for="monitors">Choose Studio Monitors:</label>
-        <div class="input-group">
-          <select id="monitors">
-            <option value="Yamaha HS5">Yamaha HS5</option>
-            <option value="KRK Rokit 5">KRK Rokit 5</option>
-            <option value="JBL 305P MkII">JBL 305P MkII</option>
-          </select>
-          <input type="number" id="monitorsQty" min="1" max="99" value="1" />
+      <!-- Monitors -->
+      <div id="monitorsSection">
+        <label>Choose Studio Monitors:</label>
+        <div class="form-row">
+          <div class="input-group">
+            <select name="monitors">
+              <option value="Yamaha HS5">Yamaha HS5</option>
+              <option value="KRK Rokit 5">KRK Rokit 5</option>
+              <option value="JBL 305P MkII">JBL 305P MkII</option>
+            </select>
+            <input type="number" min="1" max="99" value="1" />
+          </div>
         </div>
       </div>
+      <button type="button" onclick="addOption('monitorsSection', 'monitors')">Add Another Monitor</button>
 
       <button type="button" onclick="buildKit()">Build My Kit</button>
     </form>
 
     <div class="output" id="kitOutput"></div>
-  </div>
-
-  <div class="prebuilt-container">
-    <h2>Prebuilt Kits</h2>
-
-    <div class="prebuilt-kit">
-      <h3>Starter Studio Kit - $499</h3>
-      <ul>
-        <li>Audio-Technica AT2020</li>
-        <li>Focusrite Scarlett Solo</li>
-        <li>AKG K240 Headphones</li>
-        <li>M-Audio BX5 Monitors</li>
-      </ul>
-    </div>
-
-    <div class="prebuilt-kit">
-      <h3>Beat Production Kit - $799</h3>
-      <ul>
-        <li>Rode NT1</li>
-        <li>Native Instruments Komplete Audio 2</li>
-        <li>Yamaha HS5</li>
-        <li>FL Studio Producer Edition</li>
-      </ul>
-    </div>
-
-    <div class="prebuilt-kit">
-      <h3>Home Band Recording Kit - $1299</h3>
-      <ul>
-        <li>Shure SM7B</li>
-        <li>Focusrite Scarlett 18i8</li>
-        <li>Multiple Headphones</li>
-        <li>KRK Rokit 8 Monitors</li>
-        <li>Reaper DAW License</li>
-      </ul>
-    </div>
   </div>
 
   <footer>
@@ -109,29 +89,44 @@
 
   <script>
     function buildKit() {
-      const mic = document.getElementById('mic').value;
-      const micQty = document.getElementById('micQty').value;
+      const output = {
+        mic: [],
+        interface: [],
+        headphones: [],
+        monitors: []
+      };
 
-      const interface = document.getElementById('interface').value;
-      const interfaceQty = document.getElementById('interfaceQty').value;
+      ['mic', 'interface', 'headphones', 'monitors'].forEach(type => {
+        const selects = document.querySelectorAll(`#${type}Section select`);
+        const quantities = document.querySelectorAll(`#${type}Section input[type="number"]`);
+        selects.forEach((select, index) => {
+          output[type].push({ item: select.value, quantity: quantities[index].value });
+        });
+      });
 
-      const headphones = document.getElementById('headphones').value;
-      const headphonesQty = document.getElementById('headphonesQty').value;
+      let html = '<h3>Your Custom Studio Kit:</h3><ul>';
+      for (const [key, items] of Object.entries(output)) {
+        items.forEach(obj => {
+          html += `<li><strong>${key.charAt(0).toUpperCase() + key.slice(1)}:</strong> ${obj.item} (x${obj.quantity})</li>`;
+        });
+      }
+      html += '</ul>';
+      document.getElementById('kitOutput').innerHTML = html;
+    }
 
-      const monitors = document.getElementById('monitors').value;
-      const monitorsQty = document.getElementById('monitorsQty').value;
-
-      const output = `
-        <h3>Your Custom Studio Kit:</h3>
-        <ul>
-          <li><strong>Microphone (${micQty}):</strong> ${mic}</li>
-          <li><strong>Audio Interface (${interfaceQty}):</strong> ${interface}</li>
-          <li><strong>Headphones (${headphonesQty}):</strong> ${headphones}</li>
-          <li><strong>Studio Monitors (${monitorsQty}):</strong> ${monitors}</li>
-        </ul>
+    function addOption(sectionId, type) {
+      const section = document.getElementById(sectionId);
+      const row = document.createElement('div');
+      row.classList.add('form-row');
+      row.innerHTML = `
+        <div class="input-group">
+          <select name="${type}">
+            ${document.querySelector(`#${sectionId} select`).innerHTML}
+          </select>
+          <input type="number" min="1" max="99" value="1" />
+        </div>
       `;
-
-      document.getElementById('kitOutput').innerHTML = output;
+      section.appendChild(row);
     }
 
     document.getElementById('darkModeToggle').addEventListener('change', function () {

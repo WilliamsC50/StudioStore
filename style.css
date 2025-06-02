@@ -1,181 +1,122 @@
-/* Reset and Base Styles */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Arial, sans-serif;
+  background: url('Background/Background1.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
   margin: 0;
   padding: 0;
-  background-image: url('Background/Background1.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  color: #333;
-  transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
-  max-width: 800px;
-  margin: 2em auto;
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 2em;
+  background-color: rgba(0, 0, 0, 0.7);
+  margin: 40px auto;
+  padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 700px;
 }
 
 h1 {
+  color: #e74c3c;
   text-align: center;
-  color: #222;
-  margin-bottom: 1.5em;
 }
 
-/* Form Layout */
 form label {
-  font-weight: bold;
-  margin-bottom: 0.5em;
   display: block;
+  margin-top: 20px;
+  font-weight: bold;
 }
 
-select, input[type="number"] {
-  padding: 0.6em;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 1em;
-}
-
-button {
-  margin-top: 1.5em;
-  padding: 0.8em 1.5em;
-  background-color: #c62828;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 1em;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #b71c1c;
-}
-
-/* Flex row and quantity box */
 .form-row {
   display: flex;
-  flex-direction: column;
-  margin-bottom: 1.5em;
+  align-items: center;
+  margin-top: 10px;
 }
 
 .input-group {
   display: flex;
-  align-items: center;
   gap: 10px;
-  margin-top: 0.4em;
+  width: 100%;
 }
 
-.input-group select {
+select {
   flex: 1;
-}
-
-.input-group input[type="number"] {
-  width: 60px;
-  padding: 0.4em;
+  padding: 10px;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  border: none;
 }
 
-/* Output Styling */
+input[type="number"] {
+  width: 60px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #c0392b;
+}
+
 .output {
-  margin-top: 2em;
-  background-color: #f1f1f1;
-  padding: 1em;
-  border-radius: 8px;
+  margin-top: 30px;
 }
 
-.output h3 {
-  margin-top: 0;
-}
-
-/* Prebuilt Kits */
-.prebuilt-container {
-  max-width: 800px;
-  margin: 2em auto;
-  background-color: rgba(255, 255, 255, 0.92);
-  padding: 2em;
-  border-radius: 10px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
-}
-
-.prebuilt-kit {
-  margin-bottom: 2em;
-}
-
-.prebuilt-kit h3 {
-  margin-bottom: 0.5em;
-}
-
-/* Footer and Dark Mode Toggle */
 footer {
+  margin-top: 50px;
   text-align: center;
-  margin-top: 3em;
-  padding: 1em;
+  padding-bottom: 20px;
 }
 
 .toggle-label {
   display: inline-flex;
   align-items: center;
   cursor: pointer;
-  font-weight: bold;
-}
-
-.toggle-label input[type="checkbox"] {
-  display: none;
 }
 
 .toggle-slider {
-  width: 50px;
-  height: 26px;
-  background-color: #ccc;
-  border-radius: 50px;
   position: relative;
+  width: 50px;
+  height: 24px;
+  background-color: #ccc;
+  border-radius: 12px;
   margin-right: 10px;
-  transition: background-color 0.3s;
 }
 
 .toggle-slider::before {
   content: "";
   position: absolute;
-  width: 22px;
-  height: 22px;
-  left: 2px;
-  top: 2px;
+  width: 20px;
+  height: 20px;
   background-color: white;
+  top: 2px;
+  left: 2px;
   border-radius: 50%;
-  transition: transform 0.3s;
-}
-
-input[type="checkbox"]:checked + .toggle-slider {
-  background-color: #c62828;
+  transition: 0.3s;
 }
 
 input[type="checkbox"]:checked + .toggle-slider::before {
-  transform: translateX(24px);
+  transform: translateX(26px);
 }
 
-/* Dark Mode Styles */
-body.dark-mode {
+.dark-mode {
   background-color: #121212;
-  color: #eee;
+  color: #fff;
 }
 
-body.dark-mode .container,
-body.dark-mode .prebuilt-container {
-  background-color: rgba(34, 34, 34, 0.95);
+.dark-mode h1 {
+  color: #e74c3c;
 }
 
-body.dark-mode h1,
-body.dark-mode h2,
-body.dark-mode h3 {
-  color: #c62828;
-}
-
-body.dark-mode .output {
-  background-color: #1e1e1e;
-  color: #ddd;
+.dark-mode .container {
+  background-color: rgba(0, 0, 0, 0.85);
 }
