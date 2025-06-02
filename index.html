@@ -39,7 +39,7 @@
         <option value="JBL 305P MkII">JBL 305P MkII</option>
       </select>
 
-      <button type="button" onclick="buildKit()">Build My Kit</button>
+      <button type="button" id="buildButton">Build My Kit</button>
     </form>
 
     <div class="output" id="kitOutput"></div>
@@ -72,11 +72,10 @@
       document.getElementById('kitOutput').innerHTML = output;
     }
 
-    document.addEventListener('DOMContentLoaded', function () {
-      const toggle = document.getElementById('darkModeToggle');
-      toggle.addEventListener('change', function () {
-        document.body.classList.toggle('dark-mode');
-      });
+    document.getElementById('buildButton').addEventListener('click', buildKit);
+
+    document.getElementById('darkModeToggle').addEventListener('change', function () {
+      document.body.classList.toggle('dark-mode');
     });
   </script>
 </body>
