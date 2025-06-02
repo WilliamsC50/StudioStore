@@ -11,7 +11,6 @@
     <h1>Build Your Studio Kit</h1>
 
     <form id="studioForm">
-      <!-- MIC -->
       <div class="form-row">
         <label for="mic">Microphone:</label>
         <select id="mic">
@@ -20,36 +19,34 @@
           <option value="Rode NT1">Rode NT1</option>
           <option value="Audio-Technica AT2020">Audio-Technica AT2020</option>
           <option value="Neumann TLM 103">Neumann TLM 103</option>
-          <option value="AKG C414">AKG C414</option>
-          <option value="Blue Yeti Pro">Blue Yeti Pro</option>
-          <option value="Lewitt LCT 440 PURE">Lewitt LCT 440 PURE</option>
+          <option value="AKG C414 XLII">AKG C414 XLII</option>
+          <option value="Blue Yeti">Blue Yeti</option>
+          <option value="Shure MV7">Shure MV7</option>
+          <option value="Sennheiser MK4">Sennheiser MK4</option>
           <option value="Slate ML-1">Slate ML-1</option>
-          <option value="Warm Audio WA-87">Warm Audio WA-87</option>
-          <option value="sE Electronics sE2200">sE Electronics sE2200</option>
+          <option value="Lewitt LCT 440 PURE">Lewitt LCT 440 PURE</option>
         </select>
-        <input type="number" id="micQty" min="0" max="99" value="1" />
+        <input type="number" id="micQty" min="1" max="99" value="1" />
       </div>
 
-      <!-- INTERFACE -->
       <div class="form-row">
         <label for="interface">Audio Interface:</label>
         <select id="interface">
           <option value="N/A">N/A</option>
           <option value="Focusrite Scarlett 2i2">Focusrite Scarlett 2i2</option>
-          <option value="PreSonus AudioBox USB 96">PreSonus AudioBox USB 96</option>
           <option value="Universal Audio Volt 2">Universal Audio Volt 2</option>
+          <option value="PreSonus Studio 24c">PreSonus Studio 24c</option>
           <option value="Apollo Twin X">Apollo Twin X</option>
+          <option value="Behringer UMC204HD">Behringer UMC204HD</option>
           <option value="MOTU M2">MOTU M2</option>
-          <option value="Audient iD14">Audient iD14</option>
-          <option value="Steinberg UR44C">Steinberg UR44C</option>
-          <option value="Behringer UMC404HD">Behringer UMC404HD</option>
+          <option value="Audient EVO 4">Audient EVO 4</option>
           <option value="SSL 2+">SSL 2+</option>
-          <option value="Antelope Zen Go">Antelope Zen Go</option>
+          <option value="Steinberg UR22C">Steinberg UR22C</option>
+          <option value="Arturia MiniFuse 2">Arturia MiniFuse 2</option>
         </select>
-        <input type="number" id="interfaceQty" min="0" max="99" value="1" />
+        <input type="number" id="interfaceQty" min="1" max="99" value="1" />
       </div>
 
-      <!-- HEADPHONES -->
       <div class="form-row">
         <label for="headphones">Headphones:</label>
         <select id="headphones">
@@ -57,18 +54,17 @@
           <option value="Audio-Technica ATH-M50x">Audio-Technica ATH-M50x</option>
           <option value="Sony MDR-7506">Sony MDR-7506</option>
           <option value="Beyerdynamic DT 770 PRO">Beyerdynamic DT 770 PRO</option>
-          <option value="Sennheiser HD 280 Pro">Sennheiser HD 280 Pro</option>
-          <option value="Focal Listen Pro">Focal Listen Pro</option>
-          <option value="AKG K240">AKG K240</option>
+          <option value="Sennheiser HD 280 PRO">Sennheiser HD 280 PRO</option>
           <option value="Shure SRH840">Shure SRH840</option>
+          <option value="AKG K240">AKG K240</option>
+          <option value="Focal Listen Pro">Focal Listen Pro</option>
           <option value="Neumann NDH 20">Neumann NDH 20</option>
           <option value="Audeze LCD-X">Audeze LCD-X</option>
-          <option value="OneOdio Monitor 80">OneOdio Monitor 80</option>
+          <option value="Tascam TH-02">Tascam TH-02</option>
         </select>
-        <input type="number" id="headphonesQty" min="0" max="99" value="1" />
+        <input type="number" id="headphonesQty" min="1" max="99" value="1" />
       </div>
 
-      <!-- MONITORS -->
       <div class="form-row">
         <label for="monitors">Studio Monitors:</label>
         <select id="monitors">
@@ -76,40 +72,71 @@
           <option value="Yamaha HS5">Yamaha HS5</option>
           <option value="KRK Rokit 5">KRK Rokit 5</option>
           <option value="JBL 305P MkII">JBL 305P MkII</option>
-          <option value="Focal Alpha 65 Evo">Focal Alpha 65 Evo</option>
-          <option value="ADAM Audio T5V">ADAM Audio T5V</option>
-          <option value="Kali LP-6">Kali LP-6</option>
-          <option value="Presonus Eris E5">Presonus Eris E5</option>
-          <option value="Mackie CR5-X">Mackie CR5-X</option>
-          <option value="IK Multimedia iLoud MTM">IK Multimedia iLoud MTM</option>
+          <option value="Focal Alpha 50 Evo">Focal Alpha 50 Evo</option>
+          <option value="Adam Audio T5V">Adam Audio T5V</option>
           <option value="Genelec 8010A">Genelec 8010A</option>
+          <option value="PreSonus Eris E5">PreSonus Eris E5</option>
+          <option value="Mackie CR-X">Mackie CR-X</option>
+          <option value="IK Multimedia iLoud">IK Multimedia iLoud</option>
+          <option value="Kali Audio LP-6">Kali Audio LP-6</option>
         </select>
-        <input type="number" id="monitorsQty" min="0" max="99" value="1" />
+        <input type="number" id="monitorsQty" min="1" max="99" value="1" />
       </div>
 
-      <!-- MIXERS -->
       <div class="form-row">
         <label for="mixer">Mixing Console:</label>
         <select id="mixer">
           <option value="N/A">N/A</option>
-          <option value="Behringer Xenyx 1202">Behringer Xenyx 1202</option>
+          <option value="Behringer X32">Behringer X32</option>
           <option value="Yamaha MG10XU">Yamaha MG10XU</option>
-          <option value="Allen & Heath ZEDi-10FX">Allen & Heath ZEDi-10FX</option>
-          <option value="Soundcraft Signature 12">Soundcraft Signature 12</option>
+          <option value="Allen & Heath ZED-10FX">Allen & Heath ZED-10FX</option>
+          <option value="Soundcraft Signature 12 MTK">Soundcraft Signature 12 MTK</option>
           <option value="Mackie ProFX12v3">Mackie ProFX12v3</option>
-          <option value="Presonus StudioLive AR8c">Presonus StudioLive AR8c</option>
           <option value="Tascam Model 12">Tascam Model 12</option>
-          <option value="Behringer X32 Compact">Behringer X32 Compact</option>
-          <option value="Yamaha TF1">Yamaha TF1</option>
-          <option value="Midas M32R">Midas M32R</option>
+          <option value="PreSonus StudioLive AR12c">PreSonus StudioLive AR12c</option>
+          <option value="A&H QU-16">A&H QU-16</option>
+          <option value="Zoom LiveTrak L-12">Zoom LiveTrak L-12</option>
+          <option value="Rode RODECaster Pro II">Rode RODECaster Pro II</option>
         </select>
-        <input type="number" id="mixerQty" min="0" max="99" value="1" />
+        <input type="number" id="mixerQty" min="1" max="99" value="1" />
       </div>
 
       <button type="button" onclick="buildKit()">Build My Kit</button>
     </form>
 
     <div class="output" id="kitOutput"></div>
+
+    <div class="prebuilt-section">
+      <h2>Prebuilt Kits</h2>
+
+      <div class="prebuilt-kit">
+        <h3>Podcasting Starter Kit - $749</h3>
+        <ul>
+          <li>Shure MV7 Microphone</li>
+          <li>Focusrite Scarlett 2i2</li>
+          <li>Audio-Technica ATH-M50x</li>
+        </ul>
+      </div>
+
+      <div class="prebuilt-kit">
+        <h3>Beat Production Kit - $1,199</h3>
+        <ul>
+          <li>Akai MPK Mini</li>
+          <li>KRK Rokit 5 Monitors</li>
+          <li>Audio-Technica ATH-M50x</li>
+        </ul>
+      </div>
+
+      <div class="prebuilt-kit">
+        <h3>Home Band Recording Kit - $2,499</h3>
+        <ul>
+          <li>Behringer X32 Mixer</li>
+          <li>8x Shure SM57 Microphones</li>
+          <li>Universal Audio Volt 2</li>
+          <li>Beyerdynamic DT 770 PRO</li>
+        </ul>
+      </div>
+    </div>
   </div>
 
   <footer>
@@ -119,6 +146,26 @@
     </label>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    document.getElementById('darkModeToggle').addEventListener('change', function () {
+      document.body.classList.toggle('dark-mode');
+    });
+
+    function buildKit() {
+      const parts = ['mic', 'interface', 'headphones', 'monitors', 'mixer'];
+      let output = '<h3>Your Custom Studio Kit:</h3><ul>';
+
+      parts.forEach(part => {
+        const value = document.getElementById(part).value;
+        const qty = document.getElementById(part + 'Qty').value;
+        if (value !== 'N/A') {
+          output += `<li><strong>${part.charAt(0).toUpperCase() + part.slice(1)}:</strong> ${qty} x ${value}</li>`;
+        }
+      });
+
+      output += '</ul>';
+      document.getElementById('kitOutput').innerHTML = output;
+    }
+  </script>
 </body>
 </html>
