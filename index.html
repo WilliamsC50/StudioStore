@@ -17,6 +17,7 @@
         <option value="Rode NT1">Rode NT1</option>
         <option value="Audio-Technica AT2020">Audio-Technica AT2020</option>
       </select>
+      <input type="number" id="micQty" min="1" max="99" value="1" />
 
       <label for="interface">Choose an Audio Interface:</label>
       <select id="interface">
@@ -24,6 +25,7 @@
         <option value="PreSonus AudioBox USB 96">PreSonus AudioBox USB 96</option>
         <option value="Universal Audio Volt 2">Universal Audio Volt 2</option>
       </select>
+      <input type="number" id="interfaceQty" min="1" max="99" value="1" />
 
       <label for="headphones">Choose Headphones:</label>
       <select id="headphones">
@@ -31,6 +33,7 @@
         <option value="Sony MDR-7506">Sony MDR-7506</option>
         <option value="Beyerdynamic DT 770 PRO">Beyerdynamic DT 770 PRO</option>
       </select>
+      <input type="number" id="headphonesQty" min="1" max="99" value="1" />
 
       <label for="monitors">Choose Studio Monitors:</label>
       <select id="monitors">
@@ -38,6 +41,7 @@
         <option value="KRK Rokit 5">KRK Rokit 5</option>
         <option value="JBL 305P MkII">JBL 305P MkII</option>
       </select>
+      <input type="number" id="monitorsQty" min="1" max="99" value="1" />
 
       <button type="button" onclick="buildKit()">Build My Kit</button>
     </form>
@@ -92,17 +96,21 @@
   <script>
     function buildKit() {
       const mic = document.getElementById('mic').value;
-      const interface = document.getElementById('interface').value;
+      const micQty = document.getElementById('micQty').value;
+      const interfaceVal = document.getElementById('interface').value;
+      const interfaceQty = document.getElementById('interfaceQty').value;
       const headphones = document.getElementById('headphones').value;
+      const headphonesQty = document.getElementById('headphonesQty').value;
       const monitors = document.getElementById('monitors').value;
+      const monitorsQty = document.getElementById('monitorsQty').value;
 
       const output = `
         <h3>Your Custom Studio Kit:</h3>
         <ul>
-          <li><strong>Microphone:</strong> ${mic}</li>
-          <li><strong>Audio Interface:</strong> ${interface}</li>
-          <li><strong>Headphones:</strong> ${headphones}</li>
-          <li><strong>Studio Monitors:</strong> ${monitors}</li>
+          <li><strong>Microphone:</strong> ${mic} × ${micQty}</li>
+          <li><strong>Audio Interface:</strong> ${interfaceVal} × ${interfaceQty}</li>
+          <li><strong>Headphones:</strong> ${headphones} × ${headphonesQty}</li>
+          <li><strong>Studio Monitors:</strong> ${monitors} × ${monitorsQty}</li>
         </ul>
       `;
 

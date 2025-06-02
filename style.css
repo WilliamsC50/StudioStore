@@ -37,11 +37,17 @@ label {
   margin: 1em 0 0.5em;
 }
 
-select, button {
+select, input[type="number"], button {
   padding: 0.5em;
   font-size: 1em;
   border-radius: 5px;
   margin-bottom: 1em;
+}
+
+input[type="number"] {
+  max-width: 70px;
+  margin-left: auto;
+  margin-right: 0;
 }
 
 button {
