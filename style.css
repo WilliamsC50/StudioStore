@@ -114,3 +114,11 @@ input[type="checkbox"]:checked + .toggle-slider::before {
   margin-top: 1em;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
+
+.kit-card .price {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #c0392b;
+  text-align: center;
+  margin-top: 0.5em;
+}
