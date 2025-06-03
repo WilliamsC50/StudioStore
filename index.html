@@ -11,115 +11,89 @@
     <h1>Build Your Studio Kit</h1>
 
     <form id="studioForm">
-      <div id="micContainer">
-        <label>Microphones</label>
-        <div class="form-group">
-          <select>
-            <option>N/A</option>
-            <option>Shure SM7B</option>
-            <option>Rode NT1</option>
-            <option>Audio-Technica AT2020</option>
-            <option>Neumann TLM 103</option>
-            <option>AKG C414 XLII</option>
-            <option>Sennheiser MK4</option>
-            <option>Electro-Voice RE20</option>
-            <option>Blue Yeti Pro</option>
-            <option>Beyer M160</option>
-            <option>Aston Origin</option>
-          </select>
-          <input type="number" min="1" max="99" value="1" />
-        </div>
-        <button type="button" id="addMic">Add Microphone</button>
+      <div class="kit-group">
+        <label for="mic">Microphone:</label>
+        <select id="mic">
+          <option value="N/A" data-price="0">N/A</option>
+          <option value="Shure SM7B" data-price="399">Shure SM7B</option>
+          <option value="Rode NT1" data-price="269">Rode NT1</option>
+          <option value="Audio-Technica AT2020" data-price="99">Audio-Technica AT2020</option>
+          <option value="Neumann TLM 103" data-price="1395">Neumann TLM 103</option>
+          <option value="AKG C414 XLII" data-price="1099">AKG C414 XLII</option>
+          <option value="Blue Yeti Pro" data-price="249">Blue Yeti Pro</option>
+          <option value="Sennheiser MKH 416" data-price="999">Sennheiser MKH 416</option>
+          <option value="Slate ML-1" data-price="799">Slate ML-1</option>
+          <option value="Lewitt LCT 440 PURE" data-price="269">Lewitt LCT 440 PURE</option>
+          <option value="Aston Origin" data-price="299">Aston Origin</option>
+        </select>
+        <input type="number" id="micQty" min="1" max="99" value="1" />
       </div>
 
-      <div id="interfaceContainer">
-        <label>Audio Interfaces</label>
-        <div class="form-group">
-          <select>
-            <option>N/A</option>
-            <option>Focusrite Scarlett 2i2</option>
-            <option>PreSonus AudioBox USB 96</option>
-            <option>Universal Audio Volt 2</option>
-            <option>MOTU M2</option>
-            <option>Audient iD14</option>
-            <option>Steinberg UR22C</option>
-            <option>SSL 2+</option>
-            <option>Behringer UMC404HD</option>
-            <option>Apollo Twin X Duo</option>
-            <option>Tascam US-2x2HR</option>
-          </select>
-          <input type="number" min="1" max="99" value="1" />
-        </div>
-        <button type="button" id="addInterface">Add Interface</button>
+      <div class="kit-group">
+        <label for="interface">Audio Interface:</label>
+        <select id="interface">
+          <option value="N/A" data-price="0">N/A</option>
+          <option value="Focusrite Scarlett 2i2" data-price="179">Focusrite Scarlett 2i2</option>
+          <option value="Universal Audio Volt 2" data-price="249">Universal Audio Volt 2</option>
+          <option value="Apollo Twin X" data-price="899">Apollo Twin X</option>
+        </select>
+        <input type="number" id="interfaceQty" min="1" max="99" value="1" />
       </div>
 
-      <div id="headphonesContainer">
-        <label>Headphones</label>
-        <div class="form-group">
-          <select>
-            <option>N/A</option>
-            <option>Audio-Technica ATH-M50x</option>
-            <option>Sony MDR-7506</option>
-            <option>Beyerdynamic DT 770 PRO</option>
-            <option>Sennheiser HD 280 Pro</option>
-            <option>AKG K240</option>
-            <option>Focal Listen Pro</option>
-            <option>Shure SRH840</option>
-            <option>Neumann NDH 20</option>
-            <option>Audeze LCD-X</option>
-            <option>Status Audio CB-1</option>
-          </select>
-          <input type="number" min="1" max="99" value="1" />
-        </div>
-        <button type="button" id="addHeadphones">Add Headphones</button>
+      <div class="kit-group">
+        <label for="headphones">Headphones:</label>
+        <select id="headphones">
+          <option value="N/A" data-price="0">N/A</option>
+          <option value="Audio-Technica ATH-M50x" data-price="149">Audio-Technica ATH-M50x</option>
+          <option value="Sony MDR-7506" data-price="99">Sony MDR-7506</option>
+          <option value="Beyerdynamic DT 770 PRO" data-price="179">Beyerdynamic DT 770 PRO</option>
+        </select>
+        <input type="number" id="headphonesQty" min="1" max="99" value="1" />
       </div>
 
-      <div id="monitorsContainer">
-        <label>Studio Monitors</label>
-        <div class="form-group">
-          <select>
-            <option>N/A</option>
-            <option>Yamaha HS5</option>
-            <option>KRK Rokit 5</option>
-            <option>JBL 305P MkII</option>
-            <option>Adam Audio T5V</option>
-            <option>Focal Alpha 65</option>
-            <option>Genelec 8010A</option>
-            <option>Presonus Eris E5</option>
-            <option>IK Multimedia iLoud</option>
-            <option>Neumann KH 120</option>
-            <option>Mackie CR4-X</option>
-          </select>
-          <input type="number" min="1" max="99" value="1" />
-        </div>
-        <button type="button" id="addMonitors">Add Monitors</button>
+      <div class="kit-group">
+        <label for="monitors">Studio Monitors:</label>
+        <select id="monitors">
+          <option value="N/A" data-price="0">N/A</option>
+          <option value="Yamaha HS5" data-price="199">Yamaha HS5</option>
+          <option value="KRK Rokit 5" data-price="179">KRK Rokit 5</option>
+          <option value="JBL 305P MkII" data-price="149">JBL 305P MkII</option>
+        </select>
+        <input type="number" id="monitorsQty" min="1" max="99" value="1" />
       </div>
 
-      <div id="mixerContainer">
-        <label>Mixing Consoles</label>
-        <div class="form-group">
-          <select>
-            <option>N/A</option>
-            <option>Behringer Xenyx Q802USB</option>
-            <option>Yamaha MG10XU</option>
-            <option>Mackie ProFX12v3</option>
-            <option>Soundcraft Signature 12MTK</option>
-            <option>Allen & Heath ZEDi-10FX</option>
-            <option>Presonus StudioLive AR12c</option>
-            <option>Tascam Model 12</option>
-            <option>Zoom LiveTrak L-8</option>
-            <option>A&H QU-16</option>
-            <option>SSL SiX</option>
-          </select>
-          <input type="number" min="1" max="99" value="1" />
-        </div>
-        <button type="button" id="addMixer">Add Mixer</button>
+      <div class="kit-group">
+        <label for="mixer">Mixing Console:</label>
+        <select id="mixer">
+          <option value="N/A" data-price="0">N/A</option>
+          <option value="Behringer X32" data-price="2499">Behringer X32</option>
+          <option value="Yamaha MG10XU" data-price="229">Yamaha MG10XU</option>
+          <option value="Mackie ProFX12v3" data-price="259">Mackie ProFX12v3</option>
+          <option value="Allen & Heath ZEDi-10FX" data-price="279">Allen & Heath ZEDi-10FX</option>
+        </select>
+        <input type="number" id="mixerQty" min="1" max="99" value="1" />
       </div>
 
-      <button type="submit" class="submit-button">Build My Kit</button>
+      <button type="button" onclick="buildKit()">Build My Kit</button>
     </form>
 
     <div class="output" id="kitOutput"></div>
+
+    <div class="prebuilt-section">
+      <h2>Prebuilt Kits</h2>
+      <div class="kit">
+        <h3>Podcast Starter Kit - $699</h3>
+        <p>Includes: Shure SM7B, Focusrite Scarlett 2i2, Sony MDR-7506, Yamaha MG10XU</p>
+      </div>
+      <div class="kit">
+        <h3>Beat Production Kit - $849</h3>
+        <p>Includes: Audio-Technica AT2020, Apollo Twin X, ATH-M50x, KRK Rokit 5</p>
+      </div>
+      <div class="kit">
+        <h3>Home Band Recording Kit - $1299</h3>
+        <p>Includes: Rode NT1, Behringer X32, DT 770 PRO, JBL 305P MkII</p>
+      </div>
+    </div>
   </div>
 
   <footer>
