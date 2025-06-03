@@ -70,8 +70,16 @@ h1, h2 {
 .output {
   margin-top: 2em;
   padding: 1em;
-  background-color: #eef;
+  background-color: #fff;
+  color: #000;
   border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.dark-mode .output {
+  background-color: #222;
+  color: #f1f1f1;
+  border: 1px solid #444;
 }
 
 footer {
