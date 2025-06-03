@@ -1,3 +1,4 @@
+// Price dictionary
 const prices = {
   microphones: {
     "N/A": 0,
@@ -72,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
   types.forEach(type => {
     const selects = document.querySelectorAll(`select.${type}`);
     selects.forEach((select, index) => {
-      select.innerHTML = ''; // Clear in case re-rendered
+      select.innerHTML = '';
       Object.keys(prices[type]).forEach(name => {
         const option = document.createElement('option');
         option.value = name;
@@ -117,7 +118,6 @@ function addKitItem(type) {
 
   const select = document.createElement('select');
   select.className = type;
-
   Object.keys(prices[type]).forEach(name => {
     const option = document.createElement('option');
     option.value = name;
