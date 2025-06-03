@@ -1,125 +1,60 @@
-/* General Reset */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-/* Body & Background */
 body {
+  margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: url('Background/Background1.jpg') no-repeat center center fixed;
+  background-image: url('Background/Background1.jpg');
   background-size: cover;
-  color: #333;
-  min-height: 100vh;
+  background-attachment: fixed;
+  background-position: center;
+  color: #111;
 }
 
-/* Dark Mode */
-body.dark-mode {
-  background-color: #121212;
-  color: #e0e0e0;
-}
-
-/* Main Container */
 .container {
-  max-width: 900px;
-  margin: 60px auto;
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 12px;
-  padding: 30px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  max-width: 1000px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2em;
+  border-radius: 10px;
+  margin-top: 2em;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Dark Mode Container */
-body.dark-mode .container {
-  background-color: rgba(34, 34, 34, 0.9);
-}
-
-/* Headings */
-h1, h2, h3 {
-  margin-bottom: 20px;
+h1, h2 {
   text-align: center;
 }
 
-/* Form Group Layout */
-form .kit-group {
+.kit-group-container {
+  margin-bottom: 1.5em;
+}
+
+.kit-group {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 15px;
+  gap: 10px;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
-form label {
-  flex: 1;
-  margin-right: 10px;
+.kit-group select, .kit-group input {
+  padding: 0.5em;
+  font-size: 1em;
 }
 
-form select,
-form input[type="number"] {
-  flex: 2;
-  padding: 8px;
-  font-size: 1rem;
-  margin-right: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+.kit-group input[type="number"] {
+  width: 60px;
 }
 
-form input[type="number"] {
-  width: 70px;
-  flex: none;
+.kit-group button {
+  padding: 0.5em 1em;
 }
 
-/* Button */
-button {
-  display: block;
-  margin: 25px auto;
-  padding: 12px 25px;
-  font-size: 1rem;
-  background-color: #0077cc;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-button:hover {
-  background-color: #005fa3;
-}
-
-/* Output */
 .output {
-  margin-top: 30px;
-  padding: 20px;
-  background-color: #f4f4f4;
+  margin-top: 2em;
+  padding: 1em;
+  background-color: #eef;
   border-radius: 8px;
 }
 
-body.dark-mode .output {
-  background-color: #222;
-}
-
-/* Prebuilt Kits */
-.prebuilt-section {
-  margin-top: 40px;
-}
-
-.kit {
-  background-color: #e9f0f7;
-  margin-bottom: 20px;
-  padding: 15px;
-  border-left: 5px solid #0077cc;
-  border-radius: 8px;
-}
-
-body.dark-mode .kit {
-  background-color: #1e1e1e;
-  border-left-color: #00aaff;
-}
-
-/* Footer Toggle */
 footer {
-  margin-top: 50px;
+  margin-top: 2em;
   text-align: center;
 }
 
@@ -127,39 +62,56 @@ footer {
   display: inline-flex;
   align-items: center;
   cursor: pointer;
-  font-size: 1rem;
-}
-
-.toggle-label input {
-  display: none;
 }
 
 .toggle-slider {
+  display: inline-block;
   width: 40px;
   height: 20px;
   background-color: #ccc;
   border-radius: 20px;
   margin-right: 10px;
   position: relative;
-  transition: 0.3s;
 }
 
 .toggle-slider::before {
-  content: "";
+  content: '';
   position: absolute;
   width: 18px;
   height: 18px;
+  background: white;
   border-radius: 50%;
-  background-color: white;
-  top: 1px;
   left: 1px;
-  transition: 0.3s;
+  top: 1px;
+  transition: transform 0.3s;
 }
 
-.toggle-label input:checked + .toggle-slider {
-  background-color: #0077cc;
-}
-
-.toggle-label input:checked + .toggle-slider::before {
+input[type="checkbox"]:checked + .toggle-slider::before {
   transform: translateX(20px);
+}
+
+.dark-mode {
+  background-color: #121212;
+  color: white;
+}
+
+.dark-mode .container {
+  background-color: rgba(20, 20, 20, 0.95);
+  color: white;
+}
+
+.prebuilt-section {
+  margin-top: 3em;
+}
+
+.prebuilt-kit {
+  background: #f9f9f9;
+  padding: 1em;
+  border-left: 5px solid #0077cc;
+  margin-bottom: 1em;
+}
+
+.dark-mode .prebuilt-kit {
+  background: #1e1e1e;
+  border-left-color: #4da6ff;
 }

@@ -1,4 +1,3 @@
-// Pricing database
 const prices = {
   microphones: {
     "N/A": 0,
@@ -11,8 +10,7 @@ const prices = {
     "Sennheiser MK4": 299,
     "Lewitt LCT 440 PURE": 269,
     "Warm Audio WA-87": 599,
-    "Aston Spirit": 379,
-    "BeyerDynamic M160": 699
+    "Aston Spirit": 379
   },
   interfaces: {
     "N/A": 0,
@@ -68,14 +66,29 @@ const prices = {
   }
 };
 
-// Toggle Dark Mode
-document.getElementById('darkModeToggle').addEventListener('change', function () {
-  document.body.classList.toggle('dark-mode');
+// Populate dropdowns
+document.addEventListener("DOMContentLoaded", () => {
+  const types = Object.keys(prices);
+  types.forEach(type => {
+    const selects = document.querySelectorAll(`select.${type}`);
+    selects.forEach((select, index) => {
+      select.innerHTML = ''; // Clear in case re-rendered
+      Object.keys(prices[type]).forEach(name => {
+        const option = document.createElement('option');
+        option.value = name;
+        option.textContent = name;
+        select.appendChild(option);
+      });
+    });
+  });
+
+  document.getElementById('darkModeToggle').addEventListener('change', function () {
+    document.body.classList.toggle('dark-mode');
+  });
 });
 
-// Build Kit Output
 function buildKit() {
-  const categories = ['microphones', 'interfaces', 'headphones', 'monitors', 'mixers'];
+  const categories = Object.keys(prices);
   let total = 0;
   let output = `<h3>Your Custom Studio Kit:</h3><ul>`;
 
@@ -83,14 +96,13 @@ function buildKit() {
     const selects = document.querySelectorAll(`select.${cat}`);
     selects.forEach((select, i) => {
       const selectedItem = select.value;
-      const quantityInput = document.getElementById(`${cat}-qty-${i}`);
-      const qty = parseInt(quantityInput.value) || 0;
+      const qty = parseInt(document.getElementById(`${cat}-qty-${i}`)?.value) || 0;
       const price = prices[cat][selectedItem] || 0;
-      const itemTotal = price * qty;
+      const itemTotal = qty * price;
       total += itemTotal;
 
-      if (selectedItem !== "N/A" && qty > 0) {
-        output += `<li><strong>${selectedItem}</strong> x ${qty} = $${itemTotal.toFixed(2)}</li>`;
+      if (selectedItem !== 'N/A' && qty > 0) {
+        output += `<li>${selectedItem} x ${qty} = $${itemTotal.toFixed(2)}</li>`;
       }
     });
   });
@@ -99,19 +111,17 @@ function buildKit() {
   document.getElementById('kitOutput').innerHTML = output;
 }
 
-// Add Kit Item Functionality
 function addKitItem(type) {
   const container = document.getElementById(`${type}-container`);
-  const index = container.querySelectorAll(`select`).length;
+  const index = container.querySelectorAll(`select.${type}`).length;
 
   const select = document.createElement('select');
   select.className = type;
-  select.name = `${type}-${index}`;
 
   Object.keys(prices[type]).forEach(name => {
     const option = document.createElement('option');
     option.value = name;
-    option.text = name;
+    option.textContent = name;
     select.appendChild(option);
   });
 
@@ -123,8 +133,8 @@ function addKitItem(type) {
   qty.id = `${type}-qty-${index}`;
 
   const removeBtn = document.createElement('button');
-  removeBtn.innerText = "Remove";
-  removeBtn.type = "button";
+  removeBtn.textContent = 'Remove';
+  removeBtn.type = 'button';
   removeBtn.onclick = () => container.removeChild(wrapper);
 
   const wrapper = document.createElement('div');

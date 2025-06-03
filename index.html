@@ -11,67 +11,49 @@
     <h1>Build Your Studio Kit</h1>
 
     <form id="studioForm">
-      <div class="kit-group">
-        <label for="mic">Microphone:</label>
-        <select id="mic">
-          <option value="N/A" data-price="0">N/A</option>
-          <option value="Shure SM7B" data-price="399">Shure SM7B</option>
-          <option value="Rode NT1" data-price="269">Rode NT1</option>
-          <option value="Audio-Technica AT2020" data-price="99">Audio-Technica AT2020</option>
-          <option value="Neumann TLM 103" data-price="1395">Neumann TLM 103</option>
-          <option value="AKG C414 XLII" data-price="1099">AKG C414 XLII</option>
-          <option value="Blue Yeti Pro" data-price="249">Blue Yeti Pro</option>
-          <option value="Sennheiser MKH 416" data-price="999">Sennheiser MKH 416</option>
-          <option value="Slate ML-1" data-price="799">Slate ML-1</option>
-          <option value="Lewitt LCT 440 PURE" data-price="269">Lewitt LCT 440 PURE</option>
-          <option value="Aston Origin" data-price="299">Aston Origin</option>
-        </select>
-        <input type="number" id="micQty" min="1" max="99" value="1" />
+      <div id="microphones-container" class="kit-group-container">
+        <label>Microphones:</label>
+        <div class="kit-group">
+          <select class="microphones"></select>
+          <input type="number" id="microphones-qty-0" min="0" max="99" value="1" />
+          <button type="button" onclick="addKitItem('microphones')">Add Mic</button>
+        </div>
       </div>
 
-      <div class="kit-group">
-        <label for="interface">Audio Interface:</label>
-        <select id="interface">
-          <option value="N/A" data-price="0">N/A</option>
-          <option value="Focusrite Scarlett 2i2" data-price="179">Focusrite Scarlett 2i2</option>
-          <option value="Universal Audio Volt 2" data-price="249">Universal Audio Volt 2</option>
-          <option value="Apollo Twin X" data-price="899">Apollo Twin X</option>
-        </select>
-        <input type="number" id="interfaceQty" min="1" max="99" value="1" />
+      <div id="interfaces-container" class="kit-group-container">
+        <label>Audio Interfaces:</label>
+        <div class="kit-group">
+          <select class="interfaces"></select>
+          <input type="number" id="interfaces-qty-0" min="0" max="99" value="1" />
+          <button type="button" onclick="addKitItem('interfaces')">Add Interface</button>
+        </div>
       </div>
 
-      <div class="kit-group">
-        <label for="headphones">Headphones:</label>
-        <select id="headphones">
-          <option value="N/A" data-price="0">N/A</option>
-          <option value="Audio-Technica ATH-M50x" data-price="149">Audio-Technica ATH-M50x</option>
-          <option value="Sony MDR-7506" data-price="99">Sony MDR-7506</option>
-          <option value="Beyerdynamic DT 770 PRO" data-price="179">Beyerdynamic DT 770 PRO</option>
-        </select>
-        <input type="number" id="headphonesQty" min="1" max="99" value="1" />
+      <div id="headphones-container" class="kit-group-container">
+        <label>Headphones:</label>
+        <div class="kit-group">
+          <select class="headphones"></select>
+          <input type="number" id="headphones-qty-0" min="0" max="99" value="1" />
+          <button type="button" onclick="addKitItem('headphones')">Add Headphones</button>
+        </div>
       </div>
 
-      <div class="kit-group">
-        <label for="monitors">Studio Monitors:</label>
-        <select id="monitors">
-          <option value="N/A" data-price="0">N/A</option>
-          <option value="Yamaha HS5" data-price="199">Yamaha HS5</option>
-          <option value="KRK Rokit 5" data-price="179">KRK Rokit 5</option>
-          <option value="JBL 305P MkII" data-price="149">JBL 305P MkII</option>
-        </select>
-        <input type="number" id="monitorsQty" min="1" max="99" value="1" />
+      <div id="monitors-container" class="kit-group-container">
+        <label>Studio Monitors:</label>
+        <div class="kit-group">
+          <select class="monitors"></select>
+          <input type="number" id="monitors-qty-0" min="0" max="99" value="1" />
+          <button type="button" onclick="addKitItem('monitors')">Add Monitor</button>
+        </div>
       </div>
 
-      <div class="kit-group">
-        <label for="mixer">Mixing Console:</label>
-        <select id="mixer">
-          <option value="N/A" data-price="0">N/A</option>
-          <option value="Behringer X32" data-price="2499">Behringer X32</option>
-          <option value="Yamaha MG10XU" data-price="229">Yamaha MG10XU</option>
-          <option value="Mackie ProFX12v3" data-price="259">Mackie ProFX12v3</option>
-          <option value="Allen & Heath ZEDi-10FX" data-price="279">Allen & Heath ZEDi-10FX</option>
-        </select>
-        <input type="number" id="mixerQty" min="1" max="99" value="1" />
+      <div id="mixers-container" class="kit-group-container">
+        <label>Mixing Consoles:</label>
+        <div class="kit-group">
+          <select class="mixers"></select>
+          <input type="number" id="mixers-qty-0" min="0" max="99" value="1" />
+          <button type="button" onclick="addKitItem('mixers')">Add Mixer</button>
+        </div>
       </div>
 
       <button type="button" onclick="buildKit()">Build My Kit</button>
@@ -79,21 +61,38 @@
 
     <div class="output" id="kitOutput"></div>
 
-    <div class="prebuilt-section">
+    <section class="prebuilt-section">
       <h2>Prebuilt Kits</h2>
-      <div class="kit">
-        <h3>Podcast Starter Kit - $699</h3>
-        <p>Includes: Shure SM7B, Focusrite Scarlett 2i2, Sony MDR-7506, Yamaha MG10XU</p>
+
+      <div class="prebuilt-kit">
+        <h3>Podcasting Kit - $546</h3>
+        <ul>
+          <li>Shure SM7B</li>
+          <li>Focusrite Scarlett 2i2</li>
+          <li>Audio-Technica ATH-M50x</li>
+        </ul>
       </div>
-      <div class="kit">
-        <h3>Beat Production Kit - $849</h3>
-        <p>Includes: Audio-Technica AT2020, Apollo Twin X, ATH-M50x, KRK Rokit 5</p>
+
+      <div class="prebuilt-kit">
+        <h3>Beat Production Kit - $875</h3>
+        <ul>
+          <li>AKG C414 XLII</li>
+          <li>Universal Audio Volt 2</li>
+          <li>Yamaha HS5</li>
+          <li>Audio-Technica ATH-M50x</li>
+        </ul>
       </div>
-      <div class="kit">
-        <h3>Home Band Recording Kit - $1299</h3>
-        <p>Includes: Rode NT1, Behringer X32, DT 770 PRO, JBL 305P MkII</p>
+
+      <div class="prebuilt-kit">
+        <h3>Home Recording Kit for Bands - $1446</h3>
+        <ul>
+          <li>Neumann TLM 103</li>
+          <li>Behringer X32</li>
+          <li>KRK Rokit 5</li>
+          <li>Shure SRH840</li>
+        </ul>
       </div>
-    </div>
+    </section>
   </div>
 
   <footer>
