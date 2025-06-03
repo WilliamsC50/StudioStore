@@ -1,5 +1,71 @@
 // Price dictionary
-const prices = { /* same as before */ };
+const prices = {
+  microphones: {
+    'N/A': 0,
+    'Shure SM7B': 399,
+    'Neumann TLM 103': 1095,
+    'Rode NT1-A': 229,
+    'AKG C414 XLII': 1099,
+    'Audio-Technica AT2020': 99,
+    'Electro-Voice RE20': 449,
+    'Blue Yeti Pro': 249,
+    'Sennheiser MKH 416': 999,
+    'Lewitt LCT 440 PURE': 269,
+    'Warm Audio WA-87': 599
+  },
+  interfaces: {
+    'N/A': 0,
+    'Focusrite Scarlett 2i2': 179,
+    'Universal Audio Volt 2': 189,
+    'PreSonus Studio 24c': 149,
+    'MOTU M2': 199,
+    'Audient iD4': 199,
+    'SSL 2+': 279,
+    'Behringer UMC404HD': 149,
+    'Apogee Duet 3': 649,
+    'Steinberg UR22C': 189,
+    'Tascam US-2x2HR': 169
+  },
+  headphones: {
+    'N/A': 0,
+    'Audio-Technica ATH-M50x': 149,
+    'Sony MDR-7506': 99,
+    'Beyerdynamic DT 770 PRO': 179,
+    'Sennheiser HD 280 Pro': 99,
+    'AKG K240': 69,
+    'Focal Listen Professional': 299,
+    'Shure SRH840': 149,
+    'Neumann NDH 20': 499,
+    'Austrian Audio Hi-X55': 299,
+    'Status Audio CB-1': 79
+  },
+  monitors: {
+    'N/A': 0,
+    'Yamaha HS5': 199,
+    'KRK Rokit 5': 179,
+    'JBL 305P MkII': 149,
+    'Adam Audio T5V': 249,
+    'PreSonus Eris E5': 129,
+    'Focal Alpha 50': 349,
+    'Mackie CR5-X': 149,
+    'Genelec 8010A': 350,
+    'Kali Audio LP-6': 199,
+    'IK Multimedia iLoud': 299
+  },
+  mixers: {
+    'N/A': 0,
+    'Behringer Xenyx Q802USB': 89,
+    'Yamaha MG10XU': 209,
+    'Mackie ProFX10v3': 229,
+    'Allen & Heath ZEDi-10FX': 269,
+    'Tascam Model 12': 599,
+    'Zoom LiveTrak L-8': 399,
+    'Presonus StudioLive AR12c': 599,
+    'Soundcraft Signature 10': 399,
+    'Behringer X32': 999,
+    'Midas M32R': 1699
+  }
+};
 
 // Populate dropdowns
 document.addEventListener("DOMContentLoaded", () => {

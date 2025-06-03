@@ -44,4 +44,70 @@
       <!-- Monitors -->
       <div id="monitors-container" class="kit-group-container">
         <label>Studio Monitors:</label>
-        <div class="kit
+        <div class="kit-group">
+          <select class="monitors"></select>
+          <input type="number" id="monitors-qty-0" min="0" max="99" value="1" />
+          <button type="button" onclick="addKitItem('monitors')">Add Monitor</button>
+        </div>
+      </div>
+
+      <!-- Mixers -->
+      <div id="mixers-container" class="kit-group-container">
+        <label>Mixing Consoles:</label>
+        <div class="kit-group">
+          <select class="mixers"></select>
+          <input type="number" id="mixers-qty-0" min="0" max="99" value="1" />
+          <button type="button" onclick="addKitItem('mixers')">Add Mixer</button>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="button" class="build-btn" onclick="buildKit()">Build My Kit</button>
+    </form>
+
+    <div class="output" id="kitOutput"></div>
+
+    <section class="prebuilt-section">
+      <h2>Prebuilt Kits</h2>
+
+      <div class="prebuilt-kit">
+        <h3>Podcasting Kit - $546</h3>
+        <ul>
+          <li>Shure SM7B</li>
+          <li>Focusrite Scarlett 2i2</li>
+          <li>Audio-Technica ATH-M50x</li>
+        </ul>
+      </div>
+
+      <div class="prebuilt-kit">
+        <h3>Beat Production Kit - $875</h3>
+        <ul>
+          <li>AKG C414 XLII</li>
+          <li>Universal Audio Volt 2</li>
+          <li>Yamaha HS5</li>
+          <li>Audio-Technica ATH-M50x</li>
+        </ul>
+      </div>
+
+      <div class="prebuilt-kit">
+        <h3>Home Recording Kit for Bands - $1446</h3>
+        <ul>
+          <li>Neumann TLM 103</li>
+          <li>Behringer X32</li>
+          <li>KRK Rokit 5</li>
+          <li>Shure SRH840</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <label class="toggle-label">
+      <input type="checkbox" id="darkModeToggle" />
+      <span class="toggle-slider"></span> Dark Mode
+    </label>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -69,15 +69,17 @@ h1, h2 {
 
 .output {
   margin-top: 2em;
-  padding: 1em;
-  background-color: #fff;
-  color: #000;
+  padding: 1em 1.5em;
+  background-color: #f0f0f0;
+  color: #111;
   border-radius: 8px;
   border: 1px solid #ccc;
+  font-size: 1em;
+  line-height: 1.5;
 }
 
 .dark-mode .output {
-  background-color: #222;
+  background-color: #1a1a1a;
   color: #f1f1f1;
   border: 1px solid #444;
 }
