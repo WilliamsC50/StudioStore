@@ -11,12 +11,15 @@ body {
 .container {
   max-width: 1000px;
   margin: auto;
-  background: rgba(255, 255, 255, 0.25);
+  background-color: rgba(255, 255, 255, 0.7); /* Transparent white */
   padding: 2em;
   border-radius: 10px;
   margin-top: 2em;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px); /* Optional: adds a glass-like effect */
+  -webkit-backdrop-filter: blur(10px);
 }
+
 
 h1, h2 {
   text-align: center;
@@ -127,9 +130,10 @@ input[type="checkbox"]:checked + .toggle-slider::before {
 }
 
 .dark-mode .container {
-  background-color: rgba(20, 20, 20, 0.45);
-  color: white;
+  background-color: rgba(20, 20, 20, 0.7);
+  color: #fff;
 }
+
 
 .prebuilt-section {
   margin-top: 3em;
